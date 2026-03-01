@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { MapPin, Phone, Mail } from 'lucide-react';
+import { MapPin, Mail } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -36,7 +36,7 @@ const Contact = () => {
         <div className="max-w-2xl mx-auto">
           <div ref={infoRef} className="flex flex-col items-center text-center">
             <p className="text-xl text-muted mb-12 max-w-lg">
-              Si algo te llamó la atención puedes contactarme por correo o por medio telefónico, estaré encantado de ayudarte.
+              Si algo te llamó la atención puedes contactarme por correo, estaré encantado de ayudarte.
             </p>
 
             <div className="space-y-10 w-full">
@@ -50,15 +50,6 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col md:flex-row items-center justify-center gap-6 group">
-                <div className="w-14 h-14 rounded-full border-2 border-accent flex items-center justify-center group-hover:border-neon group-hover:text-neon transition-colors">
-                  <Phone className="w-6 h-6" />
-                </div>
-                <div>
-                  <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-muted mb-1">Llamada Directa</p>
-                  <a href="tel:+573138314584" className="font-black text-xl md:text-2xl text-foreground hover:text-neon transition-all">+57 313 831 4584</a>
-                </div>
-              </div>
 
               <div className="flex flex-col md:flex-row items-center justify-center gap-6 group">
                 <div className="w-14 h-14 rounded-full border-2 border-accent flex items-center justify-center group-hover:border-neon group-hover:text-neon transition-colors">

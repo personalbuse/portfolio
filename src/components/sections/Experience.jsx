@@ -80,21 +80,27 @@ const Experience = () => {
 
         <div className="grid lg:grid-cols-3 gap-16">
           <div ref={expRef} className="lg:col-span-2 space-y-12">
-            {experiences.map((exp, index) => (
-              <div key={index} className="relative pl-8 border-l border-accent group">
-                <div className="absolute -left-[5px] top-0 w-[9px] h-[9px] bg-accent rounded-full group-hover:bg-white transition-colors"></div>
+            {experiences.map((exp, index) => {
+              const isCupido = exp.company === 'Cupido';
+              return (
+              <div key={index} className={`relative pl-8 border-l group ${isCupido ? 'border-cupido bg-cupido/5 p-6 rounded-r-lg shadow-[inset_3px_0_0_0_#f59e0b]' : 'border-accent'}`}>
+                <div className={`absolute -left-[5px] top-0 w-[9px] h-[9px] rounded-full ${isCupido ? 'bg-cupido shadow-[0_0_8px_rgba(245,158,11,0.6)]' : 'bg-accent group-hover:bg-white'} transition-colors`}></div>
                 <div>
-                  <span className="text-[10px] uppercase tracking-widest text-muted">{exp.period}</span>
-                  <h3 className="text-2xl font-bold tracking-tight mt-1">{exp.role}</h3>
+                  <div className="flex items-center gap-3 flex-wrap">
+                    <span className="text-[10px] uppercase tracking-widest text-muted">{exp.period}</span>
+                    {isCupido && <span className="text-[9px] uppercase tracking-[0.2em] font-bold text-cupido bg-cupido/15 px-2 py-0.5 rounded-sm">Destacado</span>}
+                  </div>
+                  <h3 className={`font-bold tracking-tight mt-1 ${isCupido ? 'text-3xl text-cupido' : 'text-2xl'}`}>{exp.role}</h3>
                   {exp.companyUrl ? (
-                    <a href={exp.companyUrl} target="_blank" rel="noreferrer" className="text-muted font-medium mb-4 italic hover:text-foreground hover:underline block">{exp.company}</a>
+                    <a href={exp.companyUrl} target="_blank" rel="noreferrer" className={`font-medium mb-4 italic block ${isCupido ? 'text-cupido/80 hover:text-cupido hover:underline' : 'text-muted hover:text-foreground hover:underline'}`}>{exp.company}</a>
                   ) : (
                     <p className="text-muted font-medium mb-4 italic">{exp.company}</p>
                   )}
                   <p className="text-sm text-muted leading-relaxed max-w-xl">{exp.desc}</p>
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
 
           <div ref={eduRef} className="space-y-12">

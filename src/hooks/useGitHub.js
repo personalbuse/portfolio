@@ -16,7 +16,7 @@ const useGitHub = (username) => {
       } catch (err) {
         setError(err);
       } finally {
-        setLoading(setLoading(false));
+        setLoading(false);
       }
     };
 
