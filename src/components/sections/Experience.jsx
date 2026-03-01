@@ -1,10 +1,12 @@
 import { useEffect, useRef } from 'react';
+import { useLanguage } from '../../context/LanguageContext';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Experience = () => {
+  const { t } = useLanguage();
   const sectionRef = useRef(null);
   const expRef = useRef(null);
   const eduRef = useRef(null);
@@ -29,70 +31,33 @@ const Experience = () => {
       );
     }
   }, []);
-  const experiences = [
-    {
-      role: 'Desarrollo Web Service para citas',
-      company: 'Cupido',
-      companyUrl: 'https://cupidocol.com',
-      period: 'Actual',
-      desc: 'Desarrollo Full Stack enfocado en escalabilidad y experiencia de usuario.',
-    },
-    {
-      role: 'Sistema Contable',
-      company: 'Mocca',
-      period: '2023',
-      desc: 'Implementación de lógica de negocio y gestión de bases de datos.',
-    },
-    {
-      role: 'Asesor Comercial y Coordinador',
-      company: 'Claro',
-      period: '2021 - 2022',
-      desc: 'Liderazgo de equipos y optimización de procesos de venta.',
-    },
-    {
-      role: 'Técnico Independiente',
-      company: 'Freelance',
-      period: '2020 - Presente',
-      desc: 'Reparación y mantenimiento avanzado de hardware y sistemas.',
-    },
-  ];
 
-  const education = [
-    {
-      degree: 'Ingeniería de Sistemas',
-      institution: 'Universidad de Pamplona',
-      status: '9no semestre',
-    },
-    {
-      degree: 'Técnico en Sistemas',
-      institution: 'SENA',
-      status: 'Completado',
-    },
-  ];
+  const experiences = t('experience.experiences');
+  const educationList = t('experience.educationList');
 
   return (
     <section id="experience" ref={sectionRef} className="section-padding">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl font-bold tracking-tighter mb-16 flex items-center gap-4">
-          <span className="text-muted text-sm tracking-widest uppercase">04.</span>
-          EXPERIENCIA
+          <span className="text-muted text-sm tracking-widest uppercase">{t('experience.sectionNumber')}</span>
+          {t('experience.title')}
         </h2>
 
         <div className="grid lg:grid-cols-3 gap-16">
           <div ref={expRef} className="lg:col-span-2 space-y-12">
-            {experiences.map((exp, index) => {
+            {(Array.isArray(experiences) ? experiences : []).map((exp, index) => {
               const isCupido = exp.company === 'Cupido';
               return (
-              <div key={index} className={`relative pl-8 border-l group ${isCupido ? 'border-cupido bg-cupido/5 p-6 rounded-r-lg shadow-[inset_3px_0_0_0_#f59e0b]' : 'border-accent'}`}>
-                <div className={`absolute -left-[5px] top-0 w-[9px] h-[9px] rounded-full ${isCupido ? 'bg-cupido shadow-[0_0_8px_rgba(245,158,11,0.6)]' : 'bg-accent group-hover:bg-white'} transition-colors`}></div>
+              <div key={index} className={`relative pl-8 border-l group ${isCupido ? 'border-white bg-white/5 p-6 rounded-r-lg shadow-[inset_3px_0_0_0_#ffffff,0_8px_30px_rgba(255,255,255,0.06)]' : 'border-accent'}`}>
+                <div className={`absolute -left-[5px] top-0 w-[9px] h-[9px] rounded-full ${isCupido ? 'bg-white shadow-[0_0_12px_rgba(255,255,255,0.8)]' : 'bg-accent group-hover:bg-white'} transition-colors`}></div>
                 <div>
                   <div className="flex items-center gap-3 flex-wrap">
                     <span className="text-[10px] uppercase tracking-widest text-muted">{exp.period}</span>
-                    {isCupido && <span className="text-[9px] uppercase tracking-[0.2em] font-bold text-cupido bg-cupido/15 px-2 py-0.5 rounded-sm">Destacado</span>}
+                    {isCupido && <span className="text-[9px] uppercase tracking-[0.2em] font-bold text-white bg-white/10 px-2 py-0.5 rounded-sm border border-white/20">{t('experience.featured')}</span>}
                   </div>
-                  <h3 className={`font-bold tracking-tight mt-1 ${isCupido ? 'text-3xl text-cupido' : 'text-2xl'}`}>{exp.role}</h3>
+                  <h3 className={`font-bold tracking-tight mt-1 ${isCupido ? 'text-3xl text-white' : 'text-2xl'}`}>{exp.role}</h3>
                   {exp.companyUrl ? (
-                    <a href={exp.companyUrl} target="_blank" rel="noreferrer" className={`font-medium mb-4 italic block ${isCupido ? 'text-cupido/80 hover:text-cupido hover:underline' : 'text-muted hover:text-foreground hover:underline'}`}>{exp.company}</a>
+                    <a href={exp.companyUrl} target="_blank" rel="noreferrer" className={`font-medium mb-4 italic block ${isCupido ? 'text-white/80 hover:text-white hover:underline' : 'text-muted hover:text-foreground hover:underline'}`}>{exp.company}</a>
                   ) : (
                     <p className="text-muted font-medium mb-4 italic">{exp.company}</p>
                   )}
@@ -104,8 +69,8 @@ const Experience = () => {
           </div>
 
           <div ref={eduRef} className="space-y-12">
-            <h3 className="text-sm uppercase tracking-[0.3em] font-bold text-muted mb-8 italic">Educación</h3>
-            {education.map((edu, index) => (
+            <h3 className="text-sm uppercase tracking-[0.3em] font-bold text-muted mb-8 italic">{t('experience.education')}</h3>
+            {(Array.isArray(educationList) ? educationList : []).map((edu, index) => (
               <div key={index} className="p-6 border border-accent bg-accent/5 group hover:border-muted transition-colors">
                 <h4 className="font-bold text-lg mb-1">{edu.degree}</h4>
                 <p className="text-muted text-xs mb-4 uppercase tracking-widest">{edu.institution}</p>

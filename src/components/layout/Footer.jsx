@@ -1,4 +1,7 @@
+import { useLanguage } from '../../context/LanguageContext';
+
 const Footer = () => {
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
   
   return (
@@ -9,7 +12,7 @@ const Footer = () => {
           <a href="https://www.linkedin.com/in/sergio-david-burbano-mari%C3%B1o-31576a200/" target="_blank" rel="noreferrer" className="text-muted hover:text-foreground transition-colors">LinkedIn</a>
         </div>
         <p className="text-xs text-muted uppercase tracking-widest">
-          &copy; {currentYear} DABUMA ( David Burbano Mariño - Portfolio )
+          &copy; {currentYear}  {t('footer.copyright')}
         </p>
       </div>
     </footer>

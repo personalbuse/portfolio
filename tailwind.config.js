@@ -10,7 +10,7 @@ export default {
         muted: "#737373",
         neon: "#8b5cf6" /* Innovative Violet */,
         vibrant: "#ec4899" /* Striking Pink for Contact */,
-        cupido: "#f59e0b" /* Amber/Golden for Cupido highlight */,
+        cupido: "#ec4899" /* Striking Pink for Cupido highlight */,
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],

@@ -1,4 +1,5 @@
 import { HelmetProvider } from 'react-helmet-async';
+import { LanguageProvider, useLanguage } from './context/LanguageContext';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import CustomCursor from './components/common/CustomCursor';
@@ -10,25 +11,27 @@ import Experience from './components/sections/Experience';
 import Contact from './components/sections/Contact';
 import SEO from './components/common/SEO';
 
-function App() {
+function AppContent() {
+  const { t } = useLanguage();
+
   return (
     <HelmetProvider>
       <SEO 
         title="dabuma" 
-        description="Portafolio profesional de Sergio David Burbano Mariño. Estudiante de 9no semestre de Ingeniería de Sistemas enfocado en resolución de problemas y adaptabilidad." 
+        description={t('seo.description')} 
       />
       <div className="relative min-h-screen bg-background text-foreground selection:bg-neon selection:text-black">
         {/* Ambient Neon Background */}
-        <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-          <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-neon/10 blur-[150px] rounded-full"></div>
-          <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-neon/10 blur-[150px] rounded-full"></div>
+        <div className="fixed inset-0 overflow-hidden pointer-events-none z-0" aria-hidden="true">
+          <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-neon/10 blur-[80px] rounded-full" style={{ willChange: 'transform' }}></div>
+          <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-neon/10 blur-[80px] rounded-full" style={{ willChange: 'transform' }}></div>
         </div>
 
         <div className="relative z-10">
           <CustomCursor />
           <Navbar />
           
-          <main>
+          <main id="main-content" role="main">
             <Hero />
             <About />
             <Skills />
@@ -44,4 +47,13 @@ function App() {
   );
 }
 
+function App() {
+  return (
+    <LanguageProvider>
+      <AppContent />
+    </LanguageProvider>
+  );
+}
+
 export default App;
+

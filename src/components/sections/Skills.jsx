@@ -1,10 +1,12 @@
 import { useEffect, useRef } from 'react';
+import { useLanguage } from '../../context/LanguageContext';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Skills = () => {
+  const { t } = useLanguage();
   const sectionRef = useRef(null);
 
   const skills = [
@@ -36,12 +38,14 @@ const Skills = () => {
     });
   }, []);
 
+  const others = t('skills.others');
+
   return (
     <section id="skills" ref={sectionRef} className="section-padding">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl font-bold tracking-tighter mb-16 flex items-center gap-4">
-          <span className="text-muted text-sm tracking-widest uppercase">02.</span>
-          HABILIDADES
+          <span className="text-muted text-sm tracking-widest uppercase">{t('skills.sectionNumber')}</span>
+          {t('skills.title')}
         </h2>
 
         <div className="grid md:grid-cols-2 gap-x-20 gap-y-12">
@@ -49,7 +53,7 @@ const Skills = () => {
             <div key={skill.name} className="space-y-4">
               <div className="flex justify-between items-end">
                 <div>
-                  <span className="text-[10px] uppercase tracking-widest text-muted block mb-1">{skill.category}</span>
+                  <span className="text-[10px] uppercase tracking-widest text-muted block mb-1">{t(`skills.categories.${skill.category}`)}</span>
                   <span className="text-xl font-bold tracking-tight">{skill.name}</span>
                 </div>
                 <span className="text-xs font-mono text-muted">{skill.level}%</span>
@@ -65,7 +69,7 @@ const Skills = () => {
         </div>
         
         <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8">
-           {['C', 'Ubuntu', 'Ilustraciones', 'Hardware'].map(other => (
+           {(Array.isArray(others) ? others : ['C', 'Ubuntu', 'Ilustraciones', 'Hardware']).map(other => (
              <div key={other} className="border border-accent p-6 text-center group hover:bg-white hover:text-black transition-colors duration-300">
                 <p className="text-xs uppercase tracking-widest font-medium">{other}</p>
              </div>

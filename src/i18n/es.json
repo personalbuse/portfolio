@@ -1,0 +1,108 @@
+{
+  "hero": {
+    "title": "Software Engineer"
+  },
+  "nav": {
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
+  },
+  "about": {
+    "sectionNumber": "01.",
+    "title": "SOBRE MÍ",
+    "p1_start": "Soy un apasionado ",
+    "p1_highlight": "Estudiante de Ingeniería de Sistemas (9no semestre)",
+    "p1_end": " con una mentalidad orientada a resultados y una capacidad insaciable de aprendizaje. Mi enfoque principal es la adaptabilidad en entornos tecnológicos cambiantes.",
+    "p2_start": "A lo largo de mi formación en la ",
+    "p2_highlight": "Universidad de Pamplona",
+    "p2_end": ", he desarrollado una sólida base técnica en diversos lenguajes de programación y sistemas, complementada con habilidades en diseño gráfico y hardware.",
+    "p3_start": "Busco mi primera ",
+    "p3_highlight": "práctica profesional",
+    "p3_end": " para aplicar mis conocimientos en proyectos reales, aportando valor a través de la innovación y la resolución estratégica de problemas.",
+    "disclaimer": "Sinceridad ante todo: no desarrollo todo completamente desde cero escribiendo cada línea de código manualmente. Hago un uso extensivo e inteligente de plataformas de Inteligencia Artificial como GitHub Copilot, ChatGPT y Claude para iterar más rápido, resolver problemas complejos y elevar enormemente la calidad de mis resultados finales. Sé cómo guiar a la IA para construir soluciones robustas.",
+    "location": "Ubicación",
+    "language": "Idioma",
+    "langValue1": "Inglés C1",
+    "langValue2": "Español Nativo",
+    "status": "Estado",
+    "statusValue": "Buscando Prácticas"
+  },
+  "skills": {
+    "sectionNumber": "02.",
+    "title": "HABILIDADES",
+    "categories": {
+      "Lenguajes": "Lenguajes",
+      "Web": "Web",
+      "DB": "DB",
+      "OS": "OS",
+      "Design": "Diseño"
+    },
+    "others": ["C", "Ubuntu", "Ilustraciones", "Hardware"]
+  },
+  "projects": {
+    "sectionNumber": "03.",
+    "title": "PROYECTOS",
+    "subtitle": "Proyectos destacados cargados dinámicamente desde GitHub.",
+    "all": "All",
+    "errorMessage": "No se pudieron cargar los repositorios. Visita mi GitHub directamente.",
+    "noDescription": "Sin descripción disponible.",
+    "update": "Update"
+  },
+  "experience": {
+    "sectionNumber": "04.",
+    "title": "EXPERIENCIA",
+    "featured": "Destacado",
+    "education": "Educación",
+    "experiences": [
+      {
+        "role": "Desarrollo Web Service para citas",
+        "company": "Cupido",
+        "companyUrl": "https://cupidocol.com",
+        "period": "Actual",
+        "desc": "Desarrollo Full Stack enfocado en escalabilidad y experiencia de usuario."
+      },
+      {
+        "role": "Sistema Contable",
+        "company": "Mocca",
+        "period": "2023",
+        "desc": "Implementación de lógica de negocio y gestión de bases de datos."
+      },
+      {
+        "role": "Asesor Comercial y Coordinador",
+        "company": "Claro",
+        "period": "2021 - 2022",
+        "desc": "Liderazgo de equipos y optimización de procesos de venta."
+      },
+      {
+        "role": "Técnico Independiente",
+        "company": "Freelance",
+        "period": "2020 - Presente",
+        "desc": "Reparación y mantenimiento avanzado de hardware y sistemas."
+      }
+    ],
+    "educationList": [
+      {
+        "degree": "Ingeniería de Sistemas",
+        "institution": "Universidad de Pamplona",
+        "status": "9no semestre"
+      },
+      {
+        "degree": "Técnico en Sistemas",
+        "institution": "SENA",
+        "status": "Completado"
+      }
+    ]
+  },
+  "contact": {
+    "sectionNumber": "05.",
+    "title": "CONTACTO",
+    "subtitle": "Si algo te llamó la atención puedes contactarme por correo, estaré encantado de ayudarte.",
+    "emailLabel": "Email Directo",
+    "locationLabel": "Ubicación"
+  },
+  "footer": {
+    "copyright": "David Burbano Mariño - Portfolio"
+  },
+  "seo": {
+    "description": "Portafolio profesional de Sergio David Burbano Mariño. Estudiante de 9no semestre de Ingeniería de Sistemas enfocado en resolución de problemas y adaptabilidad."
+  }
+}

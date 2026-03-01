@@ -17,12 +17,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  box-sizing: border-box;
-  cursor: none !important; /* Hide default cursor for custom GSAP cursor */
+/* Only hide cursor on desktop devices with hover capability */
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: none;
+  }
+  a, button {
+    cursor: none;
+  }
 }
 
-/* Custom Cursor Styles */
+* {
+  box-sizing: border-box;
+}
+
+/* Custom Cursor Styles — desktop only */
 #custom-cursor {
   position: fixed;
   width: 20px;
@@ -32,22 +41,23 @@ body {
   pointer-events: none;
   z-index: 9999;
   mix-blend-mode: difference;
-  transition: transform 0.1s ease-out;
+  will-change: transform;
 }
 
 #cursor-glow {
   position: fixed;
-  width: 400px;
-  height: 400px;
+  width: 200px;
+  height: 200px;
   background: radial-gradient(
     circle,
-    rgba(57, 255, 20, 0.05) 0%,
-    rgba(57, 255, 20, 0) 70%
+    rgba(139, 92, 246, 0.04) 0%,
+    rgba(139, 92, 246, 0) 70%
   );
   border-radius: 50%;
   pointer-events: none;
   z-index: 1;
   transform: translate(-50%, -50%);
+  will-change: transform;
 }
 
 .section-padding {
@@ -56,6 +66,11 @@ body {
 
 .text-gradient {
   @apply bg-clip-text text-transparent bg-gradient-to-r from-white to-muted;
+}
+
+/* Sections containment for layout perf */
+section {
+  contain: layout style;
 }
 
 ::-webkit-scrollbar {
@@ -81,4 +96,43 @@ body {
 }
 .perspective-1000 {
   perspective: 1000px;
+}
+
+/* Status Badge Particle Animation */
+@keyframes status-particle {
+  0% {
+    transform: scale(0) translateY(0) translateX(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.5) translateY(-20px) translateX(var(--x, 10px));
+    opacity: 0;
+  }
+}
+
+.status-particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background-color: #22c55e;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: status-particle 2s infinite ease-out;
+  will-change: transform, opacity;
+}
+
+/* Screen reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
