@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 
 const SEO = ({ title, description }) => {
-  const fullTitle = `Portafolio`;
+  const fullTitle = `dabuma`;
   
   return (
     <Helmet>
