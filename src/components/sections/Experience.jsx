@@ -43,40 +43,32 @@ const Experience = () => {
           {t('experience.title')}
         </h2>
 
-        <div className="grid lg:grid-cols-3 gap-16">
-          <div ref={expRef} className="lg:col-span-2 space-y-12">
+        <div className="grid lg:grid-cols-1 gap-16">
+          <div ref={expRef} className="space-y-12">
             {(Array.isArray(experiences) ? experiences : []).map((exp, index) => {
               const isCupido = exp.company === 'Cupido';
               return (
-              <div key={index} className={`relative pl-8 border-l group ${isCupido ? 'border-white bg-white/5 p-6 rounded-r-lg shadow-[inset_3px_0_0_0_#ffffff,0_8px_30px_rgba(255,255,255,0.06)]' : 'border-accent'}`}>
-                <div className={`absolute -left-[5px] top-0 w-[9px] h-[9px] rounded-full ${isCupido ? 'bg-white shadow-[0_0_12px_rgba(255,255,255,0.8)]' : 'bg-accent group-hover:bg-white'} transition-colors`}></div>
+              <div key={index} className={`relative pl-8 border-l group ${isCupido ? 'border-white bg-white/5 p-8 rounded-lg shadow-[inset_4px_0_0_0_#ffffff,0_20px_40px_rgba(255,255,255,0.08)] ring-1 ring-white/20' : 'border-accent'}`}>
+                <div className={`absolute -left-[5px] top-0 w-[9px] h-[9px] rounded-full ${isCupido ? 'bg-white shadow-[0_0_15px_rgba(255,255,255,1)]' : 'bg-accent group-hover:bg-white'} transition-colors`}></div>
                 <div>
                   <div className="flex items-center gap-3 flex-wrap">
                     <span className="text-[10px] uppercase tracking-widest text-muted">{exp.period}</span>
-                    {isCupido && <span className="text-[9px] uppercase tracking-[0.2em] font-bold text-white bg-white/10 px-2 py-0.5 rounded-sm border border-white/20">{t('experience.featured')}</span>}
+                    {isCupido && <span className="text-[9px] uppercase tracking-[0.2em] font-bold text-white bg-white/20 px-3 py-1 rounded-full border border-white/40">{t('experience.featured')}</span>}
                   </div>
-                  <h3 className={`font-bold tracking-tight mt-1 ${isCupido ? 'text-3xl text-white' : 'text-2xl'}`}>{exp.role}</h3>
+                  <h3 className={`font-bold tracking-tight mt-2 ${isCupido ? 'text-4xl text-white mb-2' : 'text-2xl mb-1'}`}>{exp.role}</h3>
                   {exp.companyUrl ? (
-                    <a href={exp.companyUrl} target="_blank" rel="noreferrer" className={`font-medium mb-4 italic block ${isCupido ? 'text-white/80 hover:text-white hover:underline' : 'text-muted hover:text-foreground hover:underline'}`}>{exp.company}</a>
+                    <a href={exp.companyUrl} target="_blank" rel="noreferrer" className={`font-medium mb-6 italic inline-flex items-center gap-2 group/link ${isCupido ? 'text-white hover:underline decoration-white/50 underline-offset-4' : 'text-muted hover:text-foreground hover:underline'}`}>
+                      {exp.company}
+                      {isCupido && <span className="text-[10px] not-italic opacity-0 group-hover/link:opacity-100 transition-opacity translate-y-px">↗</span>}
+                    </a>
                   ) : (
-                    <p className="text-muted font-medium mb-4 italic">{exp.company}</p>
+                    <p className="text-muted font-medium mb-6 italic">{exp.company}</p>
                   )}
-                  <p className="text-sm text-muted leading-relaxed max-w-xl">{exp.desc}</p>
+                  <p className={`text-muted leading-relaxed max-w-2xl ${isCupido ? 'text-base opacity-90' : 'text-sm'}`}>{exp.desc}</p>
                 </div>
               </div>
               );
             })}
-          </div>
-
-          <div ref={eduRef} className="space-y-12">
-            <h3 className="text-sm uppercase tracking-[0.3em] font-bold text-muted mb-8 italic">{t('experience.education')}</h3>
-            {(Array.isArray(educationList) ? educationList : []).map((edu, index) => (
-              <div key={index} className="p-6 border border-accent bg-accent/5 group hover:border-muted transition-colors">
-                <h4 className="font-bold text-lg mb-1">{edu.degree}</h4>
-                <p className="text-muted text-xs mb-4 uppercase tracking-widest">{edu.institution}</p>
-                <span className="text-xs px-2 py-1 bg-accent/20 text-muted rounded-sm">{edu.status}</span>
-              </div>
-            ))}
           </div>
         </div>
       </div>

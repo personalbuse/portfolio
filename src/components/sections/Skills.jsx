@@ -14,8 +14,8 @@ const Skills = () => {
     { name: 'Python', level: 70, category: 'Lenguajes' },
     { name: 'React', level: 65, category: 'Web' },
     { name: 'PostgreSQL/MySQL', level: 75, category: 'DB' },
-    { name: 'Linux (Kali/Manjaro)', level: 80, category: 'OS' },
-    { name: 'Photoshop', level: 60, category: 'Design' },
+    { name: 'Linux', level: 80, category: 'OS' },
+    { name: 'DevOps', level: 35, category: 'Design' },
   ];
 
   useEffect(() => {
@@ -69,7 +69,7 @@ const Skills = () => {
         </div>
         
         <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8">
-           {(Array.isArray(others) ? others : ['C', 'Ubuntu', 'Ilustraciones', 'Hardware']).map(other => (
+           {others.map(other => (
              <div key={other} className="border border-accent p-6 text-center group hover:bg-white hover:text-black transition-colors duration-300">
                 <p className="text-xs uppercase tracking-widest font-medium">{other}</p>
              </div>

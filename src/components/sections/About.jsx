@@ -44,7 +44,7 @@ const About = () => {
               {t('about.p3_start')}<span className="text-foreground font-medium">{t('about.p3_highlight')}</span>{t('about.p3_end')}
             </p>
             <div className="mt-4 p-4 border border-accent/30 bg-background/50 rounded flex gap-4 items-start">
-               <p className="text-sm italic text-muted">
+               <p className="text-xs italic text-muted/80">
                  {t('about.disclaimer')}
                </p>
             </div>

@@ -10,15 +10,15 @@
     "sectionNumber": "01.",
     "title": "ABOUT ME",
     "p1_start": "I am a passionate ",
-    "p1_highlight": "Systems Engineering Student (9th semester)",
-    "p1_end": " with a results-oriented mindset and an insatiable capacity for learning. My main focus is adaptability in rapidly evolving tech environments.",
+    "p1_highlight": "Systems Engineering Student",
+    "p1_end": " in my final semester with a results-oriented mindset and an insatiable capacity for learning. My main focus is adaptability in rapidly evolving tech environments.",
     "p2_start": "Throughout my studies at the ",
     "p2_highlight": "University of Pamplona",
     "p2_end": ", I have developed a solid technical foundation in various programming languages and systems, complemented by skills in graphic design and hardware.",
     "p3_start": "I am seeking my first ",
     "p3_highlight": "professional internship",
     "p3_end": " to apply my knowledge to real-world projects, adding value through innovation and strategic problem-solving.",
-    "disclaimer": "Full transparency: I don't build everything entirely from scratch writing every line of code manually. I make extensive and intelligent use of AI platforms like GitHub Copilot, ChatGPT, and Claude to iterate faster, tackle complex problems, and dramatically elevate the quality of my final results. I know how to guide AI to build robust solutions.",
+    "disclaimer": "Although I don't do everything from scratch, I use artificial intelligence tools to make the most of resources, offering higher quality, efficiency and results for any project",
     "location": "Location",
     "language": "Language",
     "langValue1": "English C1",
@@ -36,12 +36,12 @@
       "OS": "OS",
       "Design": "Design"
     },
-    "others": ["C", "Ubuntu", "Illustration", "Hardware"]
+    "others": ["Commitment", "Innovation", "Neatness", "Security"]
   },
   "projects": {
     "sectionNumber": "03.",
     "title": "PROJECTS",
-    "subtitle": "Featured projects dynamically loaded from GitHub.",
+    "subtitle": "Some of my Github repositories",
     "all": "All",
     "errorMessage": "Failed to load repositories. Visit my GitHub directly.",
     "noDescription": "No description available.",
@@ -83,7 +83,7 @@
       {
         "degree": "Systems Engineering",
         "institution": "University of Pamplona",
-        "status": "9th semester"
+        "status": "IX Semester"
       },
       {
         "degree": "IT Technician",
@@ -93,14 +93,14 @@
     ]
   },
   "contact": {
-    "sectionNumber": "05.",
+    "sectionNumber": "06.",
     "title": "CONTACT",
     "subtitle": "If something caught your eye, feel free to reach out via email — I'd be happy to help.",
-    "emailLabel": "Direct Email",
+    "emailLabel": "Email",
     "locationLabel": "Location"
   },
   "footer": {
-    "copyright": "David Burbano Mariño - Portfolio"
+    "copyright": "DAvid BUrbano MAriño - Portfolio"
   },
   "seo": {
     "description": "Professional portfolio of Sergio David Burbano Mariño. 9th semester Systems Engineering student focused on problem-solving and adaptability."
