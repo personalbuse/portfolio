@@ -38,7 +38,10 @@ const About = () => {
               {t('about.p1_start')}<span className="text-foreground font-medium">{t('about.p1_highlight')}</span>{t('about.p1_end')}
             </p>
             <p>
-              {t('about.p2_start')}<span className="text-foreground">{t('about.p2_highlight')}</span>{t('about.p2_end')}
+              {t('about.p2_start')}<span className="text-foreground">{t('about.p2_highlight')}</span>
+              {t('about.p2_end').split('**').map((part, i) => (
+                i % 2 === 1 ? <span key={`bold-${i}`} className="font-bold text-foreground">{part}</span> : part
+              ))}
             </p>
             <p>
               {t('about.p3_start')}<span className="text-foreground font-medium">{t('about.p3_highlight')}</span>{t('about.p3_end')}
