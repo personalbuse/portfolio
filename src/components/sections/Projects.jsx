@@ -10,20 +10,13 @@ gsap.registerPlugin(ScrollTrigger);
 const Projects = () => {
   const { t, language } = useLanguage();
   const { repos, loading, error } = useGitHub('personalbuse');
-  const [filter, setFilter] = useState('All');
   const [currentPage, setCurrentPage] = useState(1);
   const reposPerPage = 6;
 
-  const languages = ['All', ...new Set(repos.map(repo => repo.language).filter(Boolean))];
-
-  const filteredRepos = filter === 'All' 
-    ? repos 
-    : repos.filter(repo => repo.language === filter);
-
   const indexOfLastRepo = currentPage * reposPerPage;
   const indexOfFirstRepo = indexOfLastRepo - reposPerPage;
-  const currentRepos = filteredRepos.slice(indexOfFirstRepo, indexOfLastRepo);
-  const totalPages = Math.ceil(filteredRepos.length / reposPerPage);
+  const currentRepos = repos.slice(indexOfFirstRepo, indexOfLastRepo);
+  const totalPages = Math.ceil(repos.length / reposPerPage);
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -51,7 +44,7 @@ const Projects = () => {
         }
       );
     }
-  }, [loading, error, filter, currentPage]);
+  }, [loading, error, currentPage]);
 
   useEffect(() => {
     if (featuredRef.current) {
@@ -71,10 +64,6 @@ const Projects = () => {
       );
     }
   }, []);
-
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [filter]);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -160,20 +149,6 @@ const Projects = () => {
           <h3 className="text-xl font-bold tracking-tight mb-8 flex items-center gap-4">
             <span className="text-muted text-sm tracking-widest uppercase">{t('projects.githubRepo')}</span>
           </h3>
-          
-          <div className="flex flex-wrap gap-2 mb-8">
-            {languages.map(lang => (
-              <button
-                key={lang}
-                onClick={() => setFilter(lang)}
-                className={`px-4 py-1 text-xs uppercase tracking-widest border transition-all ${
-                  filter === lang ? 'bg-white text-black border-white' : 'border-accent text-muted hover:border-neon hover:text-neon'
-                }`}
-              >
-                {lang === 'All' ? t('projects.all') : lang}
-              </button>
-            ))}
-          </div>
         </div>
 
         {loading ? (
