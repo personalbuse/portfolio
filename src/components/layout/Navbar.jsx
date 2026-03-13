@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Github, Linkedin, Sun, Moon } from 'lucide-react';
+import { Menu, X, Github, Linkedin, Sun, Moon, Download } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
+
+const CV_URL = 'https://drive.google.com/file/d/11zEgN4Sub_BUif018XQGy28XYInDwHC9/view?usp=sharing';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -72,6 +74,17 @@ const Navbar = () => {
               <span className="text-accent mx-0.5">/</span>
               <span className={language === 'es' ? 'text-neon' : 'text-muted'}>ES</span>
             </button>
+            <div className="h-4 w-px bg-accent mx-2"></div>
+            {/* CV Download Button */}
+            <a
+              href={CV_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2 text-xs uppercase tracking-widest font-bold border border-neon px-4 py-2 hover:bg-neon hover:text-black transition-all"
+            >
+              <Download className="w-4 h-4" />
+              <span>CV</span>
+            </a>
         </ul>
 
         {/* Mobile Toggle */}
@@ -109,6 +122,17 @@ const Navbar = () => {
               <span className="text-accent">/</span>
               <span className={language === 'es' ? 'text-neon' : 'text-muted'}>ES</span>
             </button>
+            {/* Mobile CV Download Button */}
+            <a
+              href={CV_URL}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => setIsOpen(false)}
+              className="flex items-center gap-2 text-lg uppercase tracking-widest font-bold border border-neon px-6 py-2 hover:bg-neon hover:text-black transition-all mt-4"
+            >
+              <Download className="w-5 h-5" />
+              <span>Descargar CV</span>
+            </a>
           </div>
         </div>
       )}

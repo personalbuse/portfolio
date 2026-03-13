@@ -9,36 +9,31 @@ const Skills = () => {
   const { t } = useLanguage();
   const sectionRef = useRef(null);
 
-  const skills = [
-    { name: 'Java', level: 75, category: 'Lenguajes' },
-    { name: 'Python', level: 70, category: 'Lenguajes' },
-    { name: 'React', level: 65, category: 'Web' },
-    { name: 'PostgreSQL/MySQL', level: 75, category: 'DB' },
-    { name: 'Linux', level: 80, category: 'OS' },
-    { name: 'DevOps', level: 35, category: 'Design' },
-  ];
+  const skillGroups = t('skills.skillGroups') || {};
+  const categories = Object.keys(skillGroups);
 
   useEffect(() => {
-    const bars = sectionRef.current.querySelectorAll('.skill-bar');
+    if (!sectionRef.current) return;
+    const groups = sectionRef.current.querySelectorAll('.skill-group');
+    if (groups.length === 0) return;
     
-    bars.forEach((bar) => {
-      const level = bar.getAttribute('data-level');
-      gsap.fromTo(bar, 
-        { width: '0%' },
-        { 
-          width: `${level}%`, 
-          duration: 1.5, 
-          ease: 'power4.out',
-          scrollTrigger: {
-            trigger: bar,
-            start: 'top 90%',
-          }
+    gsap.fromTo(groups,
+      { opacity: 0, y: 30 },
+      { 
+        opacity: 1, 
+        y: 0, 
+        duration: 0.8, 
+        stagger: 0.1, 
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 80%',
         }
-      );
-    });
+      }
+    );
   }, []);
 
-  const others = t('skills.others');
+  const others = t('skills.others') || [];
 
   return (
     <section id="skills" ref={sectionRef} className="section-padding">
@@ -48,21 +43,21 @@ const Skills = () => {
           {t('skills.title')}
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-x-20 gap-y-12">
-          {skills.map((skill) => (
-            <div key={skill.name} className="space-y-4">
-              <div className="flex justify-between items-end">
-                <div>
-                  <span className="text-[10px] uppercase tracking-widest text-muted block mb-1">{t(`skills.categories.${skill.category}`)}</span>
-                  <span className="text-xl font-bold tracking-tight drop-shadow-sm">{skill.name}</span>
-                </div>
-                <span className="text-xs font-mono text-muted drop-shadow-sm">{skill.level}%</span>
-              </div>
-              <div className="h-[1px] w-full bg-accent relative">
-                <div 
-                  className="skill-bar absolute top-0 left-0 h-full bg-zinc-800 dark:bg-white shadow-lg"
-                  data-level={skill.level}
-                ></div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {categories.map((category) => (
+            <div key={category} className="skill-group p-6 border border-accent hover:border-neon transition-colors duration-300">
+              <span className="text-[10px] uppercase tracking-widest text-neon block mb-4">
+                {t(`skills.categories.${category}`)}
+              </span>
+              <div className="flex flex-wrap gap-2">
+                {skillGroups[category].map((skill) => (
+                  <span 
+                    key={skill}
+                    className="px-3 py-1.5 text-sm font-medium bg-accent/30 text-foreground"
+                  >
+                    {skill}
+                  </span>
+                ))}
               </div>
             </div>
           ))}

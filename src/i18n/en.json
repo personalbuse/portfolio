@@ -9,43 +9,69 @@
   "about": {
     "sectionNumber": "01.",
     "title": "ABOUT ME",
-    "p1_start": "I am a passionate ",
-    "p1_highlight": "Systems Engineering Student",
-    "p1_end": " in my final semester with a results-oriented mindset and an insatiable capacity for learning. My main focus is adaptability in rapidly evolving tech environments.",
-    "p2_start": "Throughout my studies at the ",
-    "p2_highlight": "University of Pamplona",
-    "p2_end": ", I have developed a solid technical foundation in various programming languages and systems, complemented by skills in graphic design, development, data manipulation, and logic across diverse systems, my main focus is the **backend**.",
-    "p3_start": "I am seeking my first ",
-    "p3_highlight": "professional internship",
-    "p3_end": " to apply my knowledge to real-world projects, adding value through innovation and strategic problem-solving.",
-    "disclaimer": "Although I don't do everything from scratch, I use artificial intelligence tools to make the most of resources, offering higher quality, efficiency and results for any project",
     "location": "Location",
+    "locationValue": "Colombia",
+    "relocation": "Open to relocation",
     "language": "Language",
-    "langValue1": "English C1",
-    "langValue2": "Spanish Native",
+    "langValue1": "Spanish - Native",
+    "langValue2": "English - C1 (EF Certificate)",
     "status": "Status",
-    "statusValue": "Seeking Internship"
+    "statusValue": "Seeking internship",
+    "p1_start": "Systems Engineering",
+    "p1_highlight": "Student",
+    "p1_end": " in 9th semester focused on backend software development. Proficient in Python and Java for application development, with experience in REST APIs, PostgreSQL and MySQL databases, and Linux systems. Quick learning ability and adaptation to new technologies.",
+    "p2_start": "Trained at the ",
+    "p2_highlight": "University of Pamplona",
+    "p2_end": ", I have developed technical projects including backend development with Spring Boot, data manipulation, and cloud deployment. My skills include Git version control and Linux operating systems.",
+    "p3_start": "Seeking a ",
+    "p3_highlight": "professional internship",
+    "p3_end": " as a backend developer to apply my Java and Python knowledge, contributing to real projects while continuing my professional development."
   },
   "skills": {
     "sectionNumber": "02.",
     "title": "SKILLS",
     "categories": {
-      "Lenguajes": "Languages",
-      "Web": "Web",
-      "DB": "DB",
-      "OS": "OS",
-      "Design": "Design"
+      "Languages": "Languages",
+      "Backend": "Backend",
+      "Frontend": "Frontend",
+      "Database": "Database",
+      "Tools": "Tools"
+    },
+    "skillGroups": {
+      "Languages": ["Python", "Java", "JavaScript"],
+      "Backend": ["Django", "FastAPI", "REST APIs"],
+      "Frontend": ["React", "HTML/CSS"],
+      "Database": ["PostgreSQL", "MySQL"],
+      "Tools": ["Linux", "Git", "Docker"]
     },
     "others": ["Commitment", "Innovation", "Neatness", "Security"]
   },
   "projects": {
     "sectionNumber": "03.",
-    "title": "PROJECTS",
-    "subtitle": "Some of my Github repositories",
+    "title": "FEATURED PROJECTS",
+    "subtitle": "Technical projects demonstrating software development value",
+    "featuredLabel": "Featured",
+    "featured": [
+      {
+        "name": "Cupido - Dating Platform",
+        "description": "Full Stack development of a dating web service handling thousands of user profiles with real-time messaging and recommendation algorithms. Focus on scalability and user experience.",
+        "tech": ["Docker", "Git", "TypeScript", "Django"],
+        "metrics": "API latency < 100ms | 99.9% uptime",
+        "link": "https://cupidocol.com"
+      },
+      {
+        "name": "Accounting System - Mocca",
+        "description": "Accounting management system with inventory tracking, sales reports, and multi-user authentication. Business logic implementation and database management.",
+        "tech": ["React", "PostgreSQL", "FastAPI"],
+        "metrics": "40% reduction in manual processing",
+        "link": ""
+      }
+    ],
     "all": "All",
+    "githubRepo": "GitHub Repositories",
     "errorMessage": "Failed to load repositories. Visit my GitHub directly.",
     "noDescription": "No description available.",
-    "update": "Update"
+    "update": "Updated"
   },
   "experience": {
     "sectionNumber": "04.",

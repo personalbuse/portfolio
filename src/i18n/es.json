@@ -9,43 +9,69 @@
   "about": {
     "sectionNumber": "01.",
     "title": "SOBRE MÍ",
-    "p1_start": "Soy un apasionado ",
-    "p1_highlight": "Estudiante de Ingeniería de Sistemas",
-    "p1_end": " cursando ultimo semestre con una mentalidad orientada a resultados y una capacidad insaciable de aprendizaje. Mi enfoque principal es la adaptabilidad en entornos tecnológicos cambiantes.",
-    "p2_start": "A lo largo de mi formación en la ",
-    "p2_highlight": "Universidad de Pamplona",
-    "p2_end": ", he desarrollado una sólida base técnica en diversos lenguajes de programación y sistemas, complementada con habilidades en diseño gráfico, en desarrollo, manipulación de datos y logica en diversos sistemas, mi enfoque principal es el **backend**.",
-    "p3_start": "Busco mi primera ",
-    "p3_highlight": "práctica profesional",
-    "p3_end": " para aplicar mis conocimientos en proyectos reales, aportando valor a través de la innovación y la resolución estratégica de problemas.",
-    "disclaimer": "Aunque no hago todo desde cero uso las herramientas de inteligencia artificial para aprovechar el maximo de los recursos ofreciendo una mayor calidad, eficacia y resultado de cualquier proyecto",
     "location": "Ubicación",
+    "locationValue": "Colombia",
+    "relocation": "Dispuesto a trasladarme a cualquier lugar",
     "language": "Idioma",
-    "langValue1": "Inglés C1",
-    "langValue2": "Español Nativo",
+    "langValue1": "Español - Nativo",
+    "langValue2": "Inglés - C1 (Certificado EF)",
     "status": "Estado",
-    "statusValue": "Buscando Prácticas"
+    "statusValue": "En busca de prácticas",
+    "p1_start": "Estudiante de ",
+    "p1_highlight": "Ingeniería de Sistemas",
+    "p1_end": " en noveno semestre con enfoque en desarrollo de software backend. Domino Python y Java para el desarrollo de aplicaciones, con experiencia en APIs REST, bases de datos PostgreSQL y MySQL, y sistemas Linux. Capacidad de aprendizaje rápido y adaptación a nuevas tecnologías.",
+    "p2_start": "Formado en la ",
+    "p2_highlight": "Universidad de Pamplona",
+    "p2_end": ", he desarrollado proyectos técnicos que incluyen desarrollo backend con Spring Boot, manipulación de datos, y despliegue en entornos cloud. Mis habilidades incluyen control de versiones con Git y trabajo en sistemas operativos Linux.",
+    "p3_start": "Busco una ",
+    "p3_highlight": "práctica profesional",
+    "p3_end": " como desarrollador backend para aplicar mis conocimientos en Java y Python, contribuyendo a proyectos reales mientras continúo mi desarrollo profesional."
   },
   "skills": {
     "sectionNumber": "02.",
     "title": "HABILIDADES",
     "categories": {
-      "Lenguajes": "Lenguajes",
-      "Web": "Web",
-      "DB": "DB",
-      "OS": "OS",
-      "Design": "Diseño"
+      "Languages": "Lenguajes",
+      "Backend": "Backend",
+      "Frontend": "Frontend",
+      "Database": "Bases de Datos",
+      "Tools": "Herramientas"
+    },
+    "skillGroups": {
+      "Languages": ["Python", "Java", "JavaScript"],
+      "Backend": ["Django", "FastAPI", "APIs REST"],
+      "Frontend": ["React", "HTML/CSS"],
+      "Database": ["PostgreSQL", "MySQL"],
+      "Tools": ["Linux", "Git", "Docker"]
     },
     "others": ["Compromiso", "Innovación", "Pulcritud", "Seguridad"]
   },
   "projects": {
     "sectionNumber": "03.",
-    "title": "PROYECTOS",
-    "subtitle": "Algunos de mis repositorios de Github",
-    "all": "All",
+    "title": "PROYECTOS DESTACADOS",
+    "subtitle": "Proyectos técnicos con valor de desarrollo de software",
+    "featuredLabel": "Destacado",
+    "featured": [
+      {
+        "name": "Cupido - Plataforma de Citas",
+        "description": "Desarrollo Full Stack de servicio web para citas manejando miles de perfiles de usuarios con mensajería en tiempo real y algoritmos de recomendación. Enfoque en escalabilidad y experiencia de usuario.",
+        "tech": ["Docker", "Git", "TypeScript", "Django"],
+        "metrics": "API latency < 100ms | 99.9% uptime",
+        "link": "https://cupidocol.com"
+      },
+      {
+        "name": "Sistema Contable - Mocca",
+        "description": "Sistema de gestión contable con seguimiento de inventario, reportes de ventas y autenticación multiusuario. Implementación de lógica de negocio y gestión de bases de datos.",
+        "tech": ["React", "PostgreSQL", "FastAPI"],
+        "metrics": "Reducción de procesamiento manual en 40%",
+        "link": ""
+      }
+    ],
+    "all": "Todos",
+    "githubRepo": "Repositorios de GitHub",
     "errorMessage": "No se pudieron cargar los repositorios. Visita mi GitHub directamente.",
     "noDescription": "Sin descripción disponible.",
-    "update": "Update"
+    "update": "Actualizado"
   },
   "experience": {
     "sectionNumber": "04.",

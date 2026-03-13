@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import useGitHub from '../../hooks/useGitHub';
-import { ExternalLink, Star, Code2, Github } from 'lucide-react';
+import { ExternalLink, Star, Code2, Github, Cpu } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -32,6 +32,7 @@ const Projects = () => {
 
   const sectionRef = useRef(null);
   const gridRef = useRef(null);
+  const featuredRef = useRef(null);
 
   useEffect(() => {
     if (!loading && !error && gridRef.current) {
@@ -53,6 +54,25 @@ const Projects = () => {
   }, [loading, error, filter, currentPage]);
 
   useEffect(() => {
+    if (featuredRef.current) {
+      gsap.fromTo(featuredRef.current.children,
+        { opacity: 0, y: 30 },
+        { 
+          opacity: 1, 
+          y: 0, 
+          duration: 0.8, 
+          stagger: 0.2, 
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: featuredRef.current,
+            start: 'top 80%',
+          }
+        }
+      );
+    }
+  }, []);
+
+  useEffect(() => {
     setCurrentPage(1);
   }, [filter]);
 
@@ -66,6 +86,8 @@ const Projects = () => {
     }).format(date);
   };
 
+  const featuredProjects = t('projects.featured') || [];
+
   return (
     <section id="projects" ref={sectionRef} className="section-padding bg-accent/5">
       <div className="max-w-7xl mx-auto">
@@ -77,8 +99,69 @@ const Projects = () => {
             </h2>
             <p className="text-muted">{t('projects.subtitle')}</p>
           </div>
+        </div>
 
-          <div className="flex flex-wrap gap-2">
+        {featuredProjects && featuredProjects.length > 0 && (
+          <div ref={featuredRef} className="grid md:grid-cols-2 gap-8 mb-20">
+            {featuredProjects.map((project, index) => (
+              <a 
+                key={index}
+                href={project.link || '#'}
+                target={project.link ? '_blank' : '_self'}
+                rel="noreferrer"
+                className="group p-8 border border-accent hover:border-neon transition-all duration-500 bg-background relative overflow-hidden"
+              >
+                <div className="relative z-10">
+                  <div className="flex items-center gap-3 mb-4">
+                    <Cpu className="w-6 h-6 text-neon" />
+                    <span className="text-xs uppercase tracking-widest text-neon font-bold">{t('projects.featuredLabel')}</span>
+                  </div>
+                  
+                  <h3 className="text-2xl font-bold tracking-tight mb-4 group-hover:text-neon transition-colors">
+                    {project.name}
+                  </h3>
+                  
+                  <p className="text-muted mb-6 leading-relaxed">
+                    {project.description}
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.tech.map((tech, techIndex) => (
+                      <span 
+                        key={techIndex}
+                        className="px-3 py-1 text-xs uppercase tracking-wider border border-accent text-muted"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  
+                  {project.metrics && (
+                    <p className="text-xs text-green-500 font-mono mb-4">
+                      {project.metrics}
+                    </p>
+                  )}
+                  
+                  {project.link && (
+                    <div className="flex items-center gap-2 text-sm text-muted group-hover:text-neon transition-colors">
+                      <span>Ver proyecto</span>
+                      <ExternalLink className="w-4 h-4" />
+                    </div>
+                  )}
+                </div>
+                
+                <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 transition-colors duration-500" />
+              </a>
+            ))}
+          </div>
+        )}
+
+        <div className="mb-12">
+          <h3 className="text-xl font-bold tracking-tight mb-8 flex items-center gap-4">
+            <span className="text-muted text-sm tracking-widest uppercase">{t('projects.githubRepo')}</span>
+          </h3>
+          
+          <div className="flex flex-wrap gap-2 mb-8">
             {languages.map(lang => (
               <button
                 key={lang}

@@ -35,30 +35,23 @@ const About = () => {
           </h2>
           <div className="space-y-6 text-muted leading-relaxed">
             <p>
-              {t('about.p1_start')}<span className="text-foreground font-medium">{t('about.p1_highlight')}</span>{t('about.p1_end')}
+              <span className="text-foreground font-medium">{t('about.p1_highlight')}</span>{t('about.p1_end')}
             </p>
             <p>
-              {t('about.p2_start')}<span className="text-foreground">{t('about.p2_highlight')}</span>
-              {t('about.p2_end').split('**').map((part, i) => (
-                i % 2 === 1 ? <span key={`bold-${i}`} className="font-bold text-foreground">{part}</span> : part
-              ))}
+              {t('about.p2_start')}<span className="text-foreground font-medium">{t('about.p2_highlight')}</span>{t('about.p2_end')}
             </p>
             <p>
               {t('about.p3_start')}<span className="text-foreground font-medium">{t('about.p3_highlight')}</span>{t('about.p3_end')}
             </p>
-            <div className="mt-4 p-4 border border-accent/30 bg-background/50 rounded flex gap-4 items-start">
-               <p className="text-xs italic text-muted/80">
-                 {t('about.disclaimer')}
-               </p>
-            </div>
           </div>
           
           <div className="mt-12 flex flex-wrap justify-center text-center gap-12 py-8 border-y border-accent/20">
             <div>
               <p className="text-[10px] uppercase tracking-widest text-muted mb-2">{t('about.location')}</p>
               <div className="flex flex-col items-center gap-1">
-                <ColombiaFlag className="mb-1 opacity-80" />
-                <p className="font-medium text-xs leading-tight">Pamplona<br />Sogamoso</p>
+                <ColombiaFlag className="mb-1 opacity-80 w-6 h-4" />
+                <p className="font-medium text-xs leading-tight">{t('about.locationValue')}</p>
+                <p className="text-[10px] text-muted">{t('about.relocation')}</p>
               </div>
             </div>
             <div>
