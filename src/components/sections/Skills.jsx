@@ -54,13 +54,13 @@ const Skills = () => {
               <div className="flex justify-between items-end">
                 <div>
                   <span className="text-[10px] uppercase tracking-widest text-muted block mb-1">{t(`skills.categories.${skill.category}`)}</span>
-                  <span className="text-xl font-bold tracking-tight">{skill.name}</span>
+                  <span className="text-xl font-bold tracking-tight drop-shadow-sm">{skill.name}</span>
                 </div>
-                <span className="text-xs font-mono text-muted">{skill.level}%</span>
+                <span className="text-xs font-mono text-muted drop-shadow-sm">{skill.level}%</span>
               </div>
               <div className="h-[1px] w-full bg-accent relative">
                 <div 
-                  className="skill-bar absolute top-0 left-0 h-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+                  className="skill-bar absolute top-0 left-0 h-full bg-zinc-800 dark:bg-white shadow-lg"
                   data-level={skill.level}
                 ></div>
               </div>

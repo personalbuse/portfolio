@@ -125,37 +125,37 @@ const Hero = () => {
         
         <div 
           ref={screenRef}
-          className="absolute top-[10%] left-[10%] w-[80%] h-[50%] bg-black border-[8px] md:border-[16px] border-white rounded-t-xl rounded-b-sm flex items-center justify-center overflow-hidden preserve-3d shadow-[0_-20px_50px_rgba(255,255,255,0.1)] z-20 origin-bottom"
+          className="absolute top-[10%] left-[10%] w-[80%] h-[50%] bg-zinc-800 dark:bg-zinc-900 border-[8px] md:border-[16px] border-zinc-400 dark:border-white rounded-t-xl rounded-b-sm flex items-center justify-center overflow-hidden preserve-3d dark:shadow-[0_-20px_50px_rgba(255,255,255,0.1)] shadow-[0_-20px_50px_rgba(0,0,0,0.1)] z-20 origin-bottom"
         >
           <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none"></div>
           
           <div className="text-center p-4 z-10 w-full">
-             <h2 className="text-[8px] md:text-xs text-muted font-mono uppercase tracking-[0.3em] mb-2 md:mb-4">
+             <h2 className="text-[8px] md:text-xs text-zinc-400 dark:text-zinc-500 font-mono uppercase tracking-[0.3em] mb-2 md:mb-4 drop-shadow-sm">
                <span ref={titleRef}></span>
              </h2>
-             <h1 className="text-xl md:text-5xl font-black tracking-tighter leading-none text-white whitespace-pre-line inline-block">
-               <span ref={nameRef}></span><span className="animate-pulse border-r-4 border-white ml-1 inline-block h-[1em] align-middle"></span>
-             </h1>
+             <h1 className="text-xl md:text-5xl font-black tracking-tighter leading-none text-zinc-100 dark:text-white whitespace-pre-line inline-block drop-shadow-md">
+                <span ref={nameRef}></span><span className="animate-pulse border-r-4 border-zinc-100 dark:border-white ml-1 inline-block h-[1em] align-middle"></span>
+              </h1>
           </div>
         </div>
 
         <div 
           ref={baseRef}
-          className="absolute top-[60%] left-[5%] w-[90%] h-[35%] bg-zinc-200 rounded-b-xl rounded-t-sm preserve-3d shadow-[0_20px_50px_rgba(255,255,255,0.1)] z-10 origin-top"
+          className="absolute top-[60%] left-[5%] w-[90%] h-[35%] bg-zinc-300 dark:bg-zinc-800 rounded-b-xl rounded-t-sm preserve-3d dark:shadow-[0_20px_50px_rgba(255,255,255,0.1)] shadow-[0_20px_50px_rgba(0,0,0,0.1)] z-10 origin-top"
           style={{ transform: 'rotateX(75deg) translateY(-2px)' }}
         >
           <div 
             ref={keyboardRef}
-            className="absolute top-[10%] left-[10%] w-[80%] h-[50%] flex flex-wrap gap-[2px] md:gap-1 p-2 bg-zinc-300 rounded pointer-events-none preserve-3d"
+            className="absolute top-[10%] left-[10%] w-[80%] h-[50%] flex flex-wrap gap-[2px] md:gap-1 p-2 bg-zinc-400 dark:bg-zinc-700 rounded pointer-events-none preserve-3d"
           >
             {Array.from({ length: 60 }).map((_, i) => (
-              <div key={i} className="flex-grow h-[15%] bg-zinc-100 rounded-[2px] border border-zinc-400"></div>
+              <div key={i} className="flex-grow h-[15%] bg-zinc-200 dark:bg-zinc-600 rounded-[2px] border border-zinc-500 dark:border-zinc-500"></div>
             ))}
           </div>
 
           <div 
             ref={trackpadRef}
-            className="absolute bottom-[10%] left-[50%] -translate-x-1/2 w-[30%] h-[25%] bg-zinc-300 border border-zinc-400 rounded-sm preserve-3d"
+            className="absolute bottom-[10%] left-[50%] -translate-x-1/2 w-[30%] h-[25%] bg-zinc-400 dark:bg-zinc-700 border border-zinc-500 dark:border-zinc-500 rounded-sm preserve-3d"
           ></div>
         </div>
 

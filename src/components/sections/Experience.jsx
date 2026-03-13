@@ -48,16 +48,16 @@ const Experience = () => {
             {(Array.isArray(experiences) ? experiences : []).map((exp, index) => {
               const isCupido = exp.company === 'Cupido';
               return (
-              <div key={index} className={`relative pl-8 border-l group ${isCupido ? 'border-white bg-white/5 p-8 rounded-lg shadow-[inset_4px_0_0_0_#ffffff,0_20px_40px_rgba(255,255,255,0.08)] ring-1 ring-white/20' : 'border-accent'}`}>
-                <div className={`absolute -left-[5px] top-0 w-[9px] h-[9px] rounded-full ${isCupido ? 'bg-white shadow-[0_0_15px_rgba(255,255,255,1)]' : 'bg-accent group-hover:bg-white'} transition-colors`}></div>
+              <div key={index} className={`relative pl-8 border-l group ${isCupido ? 'border-[var(--highlight-border)] bg-[var(--highlight-bg)] p-8 rounded-lg shadow-[inset_4px_0_0_0_var(--highlight-border),0_20px_40px_var(--highlight-ring)] ring-1 ring-[var(--highlight-ring)]' : 'border-accent'}`}>
+                <div className={`absolute -left-[5px] top-0 w-[9px] h-[9px] rounded-full ${isCupido ? 'bg-[var(--highlight-border)] shadow-[0_0_15px_var(--highlight-border)]' : 'bg-accent group-hover:bg-foreground'} transition-colors`}></div>
                 <div>
                   <div className="flex items-center gap-3 flex-wrap">
                     <span className="text-[10px] uppercase tracking-widest text-muted">{exp.period}</span>
-                    {isCupido && <span className="text-[9px] uppercase tracking-[0.2em] font-bold text-white bg-white/20 px-3 py-1 rounded-full border border-white/40">{t('experience.featured')}</span>}
+                    {isCupido && <span className="text-[9px] uppercase tracking-[0.2em] font-bold text-[var(--highlight-text)] bg-[var(--highlight-accent)] px-3 py-1 rounded-full border border-[var(--highlight-border)]">{t('experience.featured')}</span>}
                   </div>
-                  <h3 className={`font-bold tracking-tight mt-2 ${isCupido ? 'text-4xl text-white mb-2' : 'text-2xl mb-1'}`}>{exp.role}</h3>
+                  <h3 className={`font-bold tracking-tight mt-2 ${isCupido ? 'text-4xl text-[var(--highlight-text)] mb-2' : 'text-2xl mb-1'}`}>{exp.role}</h3>
                   {exp.companyUrl ? (
-                    <a href={exp.companyUrl} target="_blank" rel="noreferrer" className={`font-medium mb-6 italic inline-flex items-center gap-2 group/link ${isCupido ? 'text-white hover:underline decoration-white/50 underline-offset-4' : 'text-muted hover:text-foreground hover:underline'}`}>
+                    <a href={exp.companyUrl} target="_blank" rel="noreferrer" className={`font-medium mb-6 italic inline-flex items-center gap-2 group/link ${isCupido ? 'text-[var(--highlight-text)] hover:underline decoration-[var(--highlight-border)]/50 underline-offset-4' : 'text-muted hover:text-foreground hover:underline'}`}>
                       {exp.company}
                       {isCupido && <span className="text-[10px] not-italic opacity-0 group-hover/link:opacity-100 transition-opacity translate-y-px">↗</span>}
                     </a>

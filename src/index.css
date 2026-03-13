@@ -4,17 +4,41 @@
 
 :root {
   --font-inter: "Inter", sans-serif;
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+  --accent: #e5e5e5;
+  --muted: #737373;
+  --cursor-color: #0a0a0a;
+  --highlight-bg: rgba(0, 0, 0, 0.05);
+  --highlight-border: #0a0a0a;
+  --highlight-ring: rgba(0, 0, 0, 0.2);
+  --highlight-text: #0a0a0a;
+  --highlight-accent: rgba(0, 0, 0, 0.2);
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ffffff;
+  --accent: #333333;
+  --muted: #737373;
+  --cursor-color: #ffffff;
+  --highlight-bg: rgba(255, 255, 255, 0.05);
+  --highlight-border: #ffffff;
+  --highlight-ring: rgba(255, 255, 255, 0.2);
+  --highlight-text: #ffffff;
+  --highlight-accent: rgba(255, 255, 255, 0.2);
 }
 
 body {
   margin: 0;
   padding: 0;
-  background-color: #0a0a0a;
-  color: #ffffff;
+  background-color: var(--background);
+  color: var(--foreground);
   font-family: var(--font-inter);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Only hide cursor on desktop devices with hover capability */
@@ -34,14 +58,15 @@ body {
 /* Custom Cursor Styles — desktop only */
 #custom-cursor {
   position: fixed;
-  width: 20px;
-  height: 20px;
-  background: white;
+  width: 16px;
+  height: 16px;
+  background: transparent;
+  border: 2px solid var(--cursor-color);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
-  mix-blend-mode: difference;
   will-change: transform;
+  box-shadow: 0 0 10px var(--cursor-color);
 }
 
 #cursor-glow {
@@ -65,7 +90,7 @@ body {
 }
 
 .text-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-white to-muted;
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-foreground to-muted;
 }
 
 /* Sections containment for layout perf */
@@ -78,16 +103,16 @@ section {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: var(--background);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333;
+  background: var(--accent);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #444;
+  background: var(--muted);
 }
 
 /* 3D Utilities for Hero Computer */
