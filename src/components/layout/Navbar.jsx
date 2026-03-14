@@ -39,10 +39,15 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled || isOpen ? 'bg-background/95 backdrop-blur-md border-b border-accent py-4' : 'bg-transparent py-6'}`}>
+    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled || isOpen ? 'bg-background/95 backdrop-blur-md border-b border-accent py-3' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center relative z-50">
-        <a href="#home" className="text-xl font-bold tracking-tighter hover:text-neon transition-colors">
-          dabuma.
+        <a href="#home" className="flex items-center overflow-hidden hover:text-neon transition-colors">
+          <span className={`text-xl font-bold tracking-tighter transition-all duration-300 ease-out translate-y-0 ${scrolled ? 'opacity-0 -translate-y-full absolute' : 'opacity-100'}`}>
+            dabuma.<span className={`inline-block w-0.5 h-5 ml-0.5 align-middle animate-pulse ${darkMode ? 'bg-white' : 'bg-black'}`}></span>
+          </span>
+          <span className={`text-xl font-bold tracking-tighter transition-all duration-300 ease-out ${scrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-full absolute'}`}>
+            dbm
+          </span>
         </a>
 
         {/* Desktop Nav */}
