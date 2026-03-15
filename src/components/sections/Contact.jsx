@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
-import { Mail, Send } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import ColombiaFlag from '../common/ColombiaFlag';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -13,81 +13,43 @@ const Contact = () => {
   const titleRef = useRef(null);
   const infoRef = useRef(null);
   const cardsRef = useRef([]);
-  const ctaRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Title animation
+      // Title animation - faster
       gsap.fromTo(titleRef.current,
-        { opacity: 0, y: 50, scale: 0.9 },
+        { opacity: 0, y: 30 },
         {
           opacity: 1,
           y: 0,
-          scale: 1,
-          duration: 1,
-          ease: 'power4.out',
+          duration: 0.5,
+          ease: 'power3.out',
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: 'top 80%',
+            start: 'top 85%',
           }
         }
       );
 
-      // Cards entrance with bounce
+      // Cards entrance - faster
       cardsRef.current.forEach((card, i) => {
         if (card) {
           gsap.fromTo(card,
-            { opacity: 0, y: 60, scale: 0.8 },
+            { opacity: 0, y: 30 },
             {
               opacity: 1,
               y: 0,
-              scale: 1,
-              duration: 0.8,
-              delay: 0.3 + i * 0.15,
-              ease: 'back.out(1.5)',
+              duration: 0.4,
+              delay: 0.1 + i * 0.1,
+              ease: 'power3.out',
               scrollTrigger: {
                 trigger: infoRef.current,
-                start: 'top 85%',
+                start: 'top 90%',
               }
             }
           );
-
-          // Hover animations
-          card.addEventListener('mouseenter', () => {
-            gsap.to(card, { scale: 1.05, y: -5, duration: 0.3, ease: 'power2.out' });
-          });
-          card.addEventListener('mouseleave', () => {
-            gsap.to(card, { scale: 1, y: 0, duration: 0.3, ease: 'power2.out' });
-          });
         }
       });
-
-      // CTA button animation
-      if (ctaRef.current) {
-        gsap.fromTo(ctaRef.current,
-          { opacity: 0, y: 30 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            delay: 0.8,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: infoRef.current,
-              start: 'top 80%',
-            }
-          }
-        );
-
-        // Continuous pulse effect
-        gsap.to(ctaRef.current, {
-          boxShadow: '0 0 30px rgba(139, 92, 246, 0.4)',
-          duration: 1.5,
-          yoyo: true,
-          repeat: -1,
-          ease: 'sine.inOut'
-        });
-      }
     }, sectionRef);
 
     return () => ctx.revert();
@@ -155,18 +117,6 @@ const Contact = () => {
                 </p>
               </div>
             </div>
-          </div>
-
-          {/* CTA Button */}
-          <div className="text-center">
-            <a 
-              ref={ctaRef}
-              href="mailto:sergioburbanom@gmail.com"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-neon text-black font-bold rounded-full hover:bg-white transition-colors duration-300 group"
-            >
-              <span>Contactar</span>
-              <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-            </a>
           </div>
         </div>
       </div>

@@ -15,74 +15,54 @@ const Experience = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Title animation
+      // Title animation - faster
       gsap.fromTo(titleRef.current,
-        { opacity: 0, x: -100, skewX: 10 },
+        { opacity: 0, y: 30 },
         {
           opacity: 1,
-          x: 0,
-          skewX: 0,
-          duration: 1,
-          ease: 'power4.out',
+          y: 0,
+          duration: 0.5,
+          ease: 'power3.out',
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: 'top 80%',
+            start: 'top 85%',
           }
         }
       );
 
-      // Timeline line drawing animation
+      // Timeline line drawing animation - faster
       if (timelineRef.current) {
         gsap.fromTo(timelineRef.current,
           { scaleY: 0, transformOrigin: 'top center' },
           {
             scaleY: 1,
-            duration: 1.5,
+            duration: 0.8,
             ease: 'power2.out',
             scrollTrigger: {
               trigger: expRef.current,
-              start: 'top 80%',
+              start: 'top 85%',
             }
           }
         );
       }
 
-      // Experience items with staggered entrance
+      // Experience items - faster
       expItemsRef.current.forEach((item, i) => {
         if (item) {
           gsap.fromTo(item,
-            { opacity: 0, x: -80, scale: 0.9 },
+            { opacity: 0, y: 30 },
             {
               opacity: 1,
-              x: 0,
-              scale: 1,
-              duration: 0.8,
-              delay: 0.2 + i * 0.2,
-              ease: 'back.out(1.2)',
+              y: 0,
+              duration: 0.4,
+              delay: 0.1 + i * 0.1,
+              ease: 'power3.out',
               scrollTrigger: {
                 trigger: expRef.current,
-                start: 'top 75%',
+                start: 'top 85%',
               }
             }
           );
-
-          // Timeline dot pulse animation
-          const dot = item.querySelector('.timeline-dot');
-          if (dot) {
-            gsap.fromTo(dot,
-              { scale: 0 },
-              {
-                scale: 1,
-                duration: 0.5,
-                delay: 0.4 + i * 0.2,
-                ease: 'elastic.out(1, 0.5)',
-                scrollTrigger: {
-                  trigger: expRef.current,
-                  start: 'top 75%',
-                }
-              }
-            );
-          }
         }
       });
     }, sectionRef);

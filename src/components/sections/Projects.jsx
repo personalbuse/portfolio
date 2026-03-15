@@ -31,36 +31,34 @@ const Projects = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Title entrance with slide and fade
+      // Title entrance - faster
       gsap.fromTo(titleRef.current,
-        { opacity: 0, x: -100, skewX: 10 },
+        { opacity: 0, y: 30 },
         {
           opacity: 1,
-          x: 0,
-          skewX: 0,
-          duration: 1,
-          ease: 'power4.out',
+          y: 0,
+          duration: 0.5,
+          ease: 'power3.out',
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: 'top 80%',
+            start: 'top 85%',
           }
         }
       );
 
-      // Featured projects with 3D card flip
+      // Featured projects - faster
       if (featuredRef.current) {
         gsap.fromTo(featuredRef.current.children,
-          { opacity: 0, rotateY: -30, x: -50, transformOrigin: 'left center' },
+          { opacity: 0, y: 30 },
           { 
             opacity: 1, 
-            rotateY: 0,
-            x: 0,
-            duration: 1, 
-            stagger: 0.2, 
+            y: 0,
+            duration: 0.4, 
+            stagger: 0.1, 
             ease: 'power3.out',
             scrollTrigger: {
               trigger: featuredRef.current,
-              start: 'top 80%',
+              start: 'top 85%',
             }
           }
         );
@@ -72,24 +70,18 @@ const Projects = () => {
 
   useEffect(() => {
     if (!loading && !error && gridRef.current) {
-      // Repository cards with staggered 3D entrance
+      // Repository cards - faster
       gsap.fromTo(gridRef.current.children,
-        { opacity: 0, y: 80, rotateX: 20, scale: 0.9 },
+        { opacity: 0, y: 30 },
         { 
           opacity: 1, 
           y: 0, 
-          rotateX: 0,
-          scale: 1,
-          duration: 0.7, 
-          stagger: {
-            each: 0.08,
-            from: 'start',
-            grid: 'auto'
-          },
-          ease: 'back.out(1.2)',
+          duration: 0.3, 
+          stagger: 0.05,
+          ease: 'power3.out',
           scrollTrigger: {
             trigger: gridRef.current,
-            start: 'top 85%',
+            start: 'top 90%',
           }
         }
       );

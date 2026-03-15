@@ -15,48 +15,38 @@ const Education = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Title animation
+      // Title animation - faster
       gsap.fromTo(titleRef.current,
-        { opacity: 0, x: -100, skewX: 10 },
+        { opacity: 0, y: 30 },
         {
           opacity: 1,
-          x: 0,
-          skewX: 0,
-          duration: 1,
-          ease: 'power4.out',
+          y: 0,
+          duration: 0.5,
+          ease: 'power3.out',
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: 'top 80%',
+            start: 'top 85%',
           }
         }
       );
 
-      // Cards 3D flip entrance
+      // Cards entrance - faster
       cardsRef.current.forEach((card, i) => {
         if (card) {
           gsap.fromTo(card,
-            { opacity: 0, rotateY: 90, scale: 0.8, transformOrigin: 'center center' },
+            { opacity: 0, y: 30 },
             {
               opacity: 1,
-              rotateY: 0,
-              scale: 1,
-              duration: 0.8,
-              delay: 0.2 + i * 0.2,
-              ease: 'back.out(1.5)',
+              y: 0,
+              duration: 0.4,
+              delay: 0.1 + i * 0.1,
+              ease: 'power3.out',
               scrollTrigger: {
                 trigger: eduRef.current,
-                start: 'top 85%',
+                start: 'top 90%',
               }
             }
           );
-
-          // Continuous subtle hover effect
-          card.addEventListener('mouseenter', () => {
-            gsap.to(card, { scale: 1.02, y: -8, duration: 0.4, ease: 'power2.out' });
-          });
-          card.addEventListener('mouseleave', () => {
-            gsap.to(card, { scale: 1, y: 0, duration: 0.4, ease: 'power2.out' });
-          });
         }
       });
     }, sectionRef);

@@ -9,7 +9,6 @@ const Skills = () => {
   const { t } = useLanguage();
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
-  const skillTagsRef = useRef([]);
   const othersRef = useRef(null);
 
   const skillGroups = t('skills.skillGroups') || {};
@@ -17,79 +16,52 @@ const Skills = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Title animation with glitch effect
+      // Title animation - faster
       gsap.fromTo(titleRef.current,
-        { opacity: 0, x: -80, skewX: 15 },
+        { opacity: 0, y: 30 },
         {
           opacity: 1,
-          x: 0,
-          skewX: 0,
-          duration: 1,
-          ease: 'power4.out',
+          y: 0,
+          duration: 0.5,
+          ease: 'power3.out',
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: 'top 80%',
+            start: 'top 85%',
           }
         }
       );
 
-      // Skill groups cascade entrance
+      // Skill groups cascade entrance - faster
       const groups = sectionRef.current.querySelectorAll('.skill-group');
       gsap.fromTo(groups,
-        { opacity: 0, y: 60, scale: 0.9 },
+        { opacity: 0, y: 30 },
         { 
           opacity: 1, 
           y: 0, 
-          scale: 1,
-          duration: 0.6, 
-          stagger: {
-            each: 0.1,
-            from: 'start'
-          },
-          ease: 'back.out(1.2)',
+          duration: 0.4, 
+          stagger: 0.06,
+          ease: 'power3.out',
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: 'top 75%',
+            start: 'top 85%',
           }
         }
       );
 
-      // Individual skill tags pop-in
-      skillTagsRef.current.forEach((tag, i) => {
-        if (tag) {
-          gsap.fromTo(tag,
-            { opacity: 0, scale: 0, rotation: -10 },
-            {
-              opacity: 1,
-              scale: 1,
-              rotation: 0,
-              duration: 0.4,
-              delay: 0.5 + i * 0.03,
-              ease: 'back.out(2)',
-              scrollTrigger: {
-                trigger: sectionRef.current,
-                start: 'top 70%',
-              }
-            }
-          );
-        }
-      });
-
-      // Others section with wave effect
+      // Others section - faster
       if (othersRef.current) {
         const otherItems = othersRef.current.children;
         gsap.fromTo(otherItems,
-          { opacity: 0, y: 40, rotateX: 45 },
+          { opacity: 0, y: 20 },
           {
             opacity: 1,
             y: 0,
-            rotateX: 0,
-            duration: 0.5,
-            stagger: 0.1,
+            duration: 0.3,
+            stagger: 0.05,
             ease: 'power3.out',
             scrollTrigger: {
               trigger: othersRef.current,
-              start: 'top 85%',
+              start: 'top 90%',
             }
           }
         );
@@ -98,12 +70,6 @@ const Skills = () => {
 
     return () => ctx.revert();
   }, []);
-
-  const addToSkillTagRefs = (el) => {
-    if (el && !skillTagsRef.current.includes(el)) {
-      skillTagsRef.current.push(el);
-    }
-  };
 
   const others = t('skills.others') || [];
 
@@ -132,10 +98,9 @@ const Skills = () => {
                 {t(`skills.categories.${category}`)}
               </span>
               <div className="flex flex-wrap gap-2">
-                {skillGroups[category].map((skill, skillIndex) => (
+                {skillGroups[category].map((skill) => (
                   <span 
                     key={skill}
-                    ref={addToSkillTagRefs}
                     className="px-3 py-1.5 text-sm font-medium bg-accent/20 text-foreground rounded-md border border-accent/30 hover:bg-neon/20 hover:border-neon/50 hover:scale-105 transition-all duration-200 cursor-default"
                   >
                     {skill}

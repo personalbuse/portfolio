@@ -16,70 +16,58 @@ const About = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Title reveal with split animation
+      // Title reveal - faster
       gsap.fromTo(titleRef.current,
-        { opacity: 0, x: -100, skewX: 10 },
+        { opacity: 0, y: 30 },
         {
           opacity: 1,
-          x: 0,
-          skewX: 0,
-          duration: 1,
-          ease: 'power4.out',
+          y: 0,
+          duration: 0.5,
+          ease: 'power3.out',
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: 'top 80%',
+            start: 'top 85%',
           }
         }
       );
 
-      // Paragraphs stagger with blur effect
+      // Paragraphs stagger - faster
       paragraphsRef.current.forEach((p, i) => {
         if (p) {
           gsap.fromTo(p,
-            { opacity: 0, y: 50, filter: 'blur(10px)' },
+            { opacity: 0, y: 20 },
             {
               opacity: 1,
               y: 0,
-              filter: 'blur(0px)',
-              duration: 0.8,
-              delay: 0.2 + i * 0.15,
+              duration: 0.4,
+              delay: 0.1 + i * 0.08,
               ease: 'power3.out',
               scrollTrigger: {
                 trigger: sectionRef.current,
-                start: 'top 75%',
+                start: 'top 85%',
               }
             }
           );
         }
       });
 
-      // Stats cards 3D flip entrance
+      // Stats cards entrance - faster
       if (statsRef.current) {
         const cards = statsRef.current.children;
         gsap.fromTo(cards,
-          { opacity: 0, rotateY: 90, transformOrigin: 'left center' },
+          { opacity: 0, y: 30 },
           {
             opacity: 1,
-            rotateY: 0,
-            duration: 0.8,
-            stagger: 0.15,
-            ease: 'back.out(1.5)',
+            y: 0,
+            duration: 0.4,
+            stagger: 0.08,
+            ease: 'power3.out',
             scrollTrigger: {
               trigger: statsRef.current,
-              start: 'top 85%',
+              start: 'top 90%',
             }
           }
         );
-
-        // Hover animation for cards
-        Array.from(cards).forEach(card => {
-          card.addEventListener('mouseenter', () => {
-            gsap.to(card, { scale: 1.05, y: -5, duration: 0.3, ease: 'power2.out' });
-          });
-          card.addEventListener('mouseleave', () => {
-            gsap.to(card, { scale: 1, y: 0, duration: 0.3, ease: 'power2.out' });
-          });
-        });
       }
     }, sectionRef);
 
