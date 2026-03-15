@@ -83,23 +83,10 @@ const Hero = () => {
         '-=0.3'
       );
 
-      // Text typing animation - faster
-      const initObj = { titleLen: 0, nameLen: 0 };
-      tl.to(initObj, {
-        titleLen: titleText.length,
-        duration: 0.4,
-        ease: 'none',
-        onUpdate: () => {
-          if(titleRef.current) titleRef.current.innerText = titleText.substring(0, Math.round(initObj.titleLen));
-        }
-      }, '-=0.2')
-      .to(initObj, {
-        nameLen: nameText.length,
-        duration: 0.6,
-        ease: 'none',
-        onUpdate: () => {
-          if(nameRef.current) nameRef.current.innerText = nameText.substring(0, Math.round(initObj.nameLen));
-        }
+      // Set text immediately after screen appears
+      tl.add(() => {
+        if(titleRef.current) titleRef.current.innerText = titleText;
+        if(nameRef.current) nameRef.current.innerText = nameText;
       })
       .fromTo(subtitleRef.current,
         { opacity: 0, y: 10 },
@@ -131,37 +118,44 @@ const Hero = () => {
       });
 
       scrollTl
+        // Screen explodes upward
         .to(screenRef.current, {
-          y: -150,
-          rotateX: -20,
-          opacity: 0,
+          y: -180,
+          rotateX: -25,
+          scale: 1.1,
           ease: 'none'
         }, 0)
+        // Stand goes down
         .to(standRef.current, {
-          y: 200,
-          rotateX: 60,
-          opacity: 0,
+          y: 150,
+          rotateX: 45,
           ease: 'none'
         }, 0)
+        // Base explodes down and rotates
         .to(baseStandRef.current, {
-          y: 300,
-          scale: 1.5,
-          rotateZ: 30,
-          opacity: 0,
+          y: 280,
+          scale: 1.3,
+          rotateZ: 25,
           ease: 'none'
         }, 0)
+        // Floating elements scatter
         .to(floatingElementsRef.current, {
-          y: (i) => (i % 2 === 0 ? -200 : 200),
-          x: (i) => (i % 2 === 0 ? -150 : 150),
-          scale: 0,
-          rotation: (i) => (i % 2 === 0 ? 180 : -180),
-          opacity: 0,
-          stagger: 0.02,
+          y: (i) => (i % 2 === 0 ? -180 : 180),
+          x: (i) => (i % 2 === 0 ? -120 : 120),
+          scale: 0.5,
+          rotation: (i) => (i % 2 === 0 ? 90 : -90),
           ease: 'none'
         }, 0)
+        // Subtitle fades
         .to(subtitleRef.current, {
-          y: 80,
+          y: 60,
           opacity: 0,
+          ease: 'none'
+        }, 0)
+        // Glow expands
+        .to(glowRef.current, {
+          scale: 2,
+          opacity: 0.3,
           ease: 'none'
         }, 0);
 
