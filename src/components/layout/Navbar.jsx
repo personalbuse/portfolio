@@ -46,7 +46,7 @@ const Navbar = () => {
             dabuma.<span className={`inline-block w-[2px] h-5 ml-0.5 align-middle ${darkMode ? 'bg-white' : 'bg-black'} animate-blink`}></span>
           </span>
           <span className={`text-xl font-bold tracking-tighter transition-all duration-300 ease-out ${scrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-full absolute'}`}>
-            dbm<span className={`inline-block w-[2px] h-5 ml-0.5 align-middle ${darkMode ? 'bg-white' : 'bg-black'} animate-blink`}></span>
+            dbm
           </span>
         </a>
 

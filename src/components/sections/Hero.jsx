@@ -1,12 +1,17 @@
 import { useEffect, useRef } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
   const { t } = useLanguage();
   const containerRef = useRef(null);
   const monitorRef = useRef(null);
   const screenRef = useRef(null);
+  const standRef = useRef(null);
+  const baseStandRef = useRef(null);
   const floatingElementsRef = useRef([]);
   const glowRef = useRef(null);
   const scanlineRef = useRef(null);
@@ -113,6 +118,52 @@ const Hero = () => {
           });
         }
       });
+
+      // Scroll-triggered explode view animation (reversible)
+      const scrollTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1,
+          pin: true,
+        }
+      });
+
+      scrollTl
+        .to(screenRef.current, {
+          y: -150,
+          rotateX: -20,
+          opacity: 0,
+          ease: 'none'
+        }, 0)
+        .to(standRef.current, {
+          y: 200,
+          rotateX: 60,
+          opacity: 0,
+          ease: 'none'
+        }, 0)
+        .to(baseStandRef.current, {
+          y: 300,
+          scale: 1.5,
+          rotateZ: 30,
+          opacity: 0,
+          ease: 'none'
+        }, 0)
+        .to(floatingElementsRef.current, {
+          y: (i) => (i % 2 === 0 ? -200 : 200),
+          x: (i) => (i % 2 === 0 ? -150 : 150),
+          scale: 0,
+          rotation: (i) => (i % 2 === 0 ? 180 : -180),
+          opacity: 0,
+          stagger: 0.02,
+          ease: 'none'
+        }, 0)
+        .to(subtitleRef.current, {
+          y: 80,
+          opacity: 0,
+          ease: 'none'
+        }, 0);
 
     }, containerRef);
 
@@ -235,7 +286,8 @@ const Hero = () => {
 
         {/* Monitor Stand Neck */}
         <div 
-          className="relative mx-auto w-12 md:w-16 h-16 md:h-24 bg-gradient-to-b from-zinc-600 to-zinc-700 dark:from-zinc-500 dark:to-zinc-600"
+          ref={standRef}
+          className="relative mx-auto w-12 md:w-16 h-16 md:h-24 bg-gradient-to-b from-zinc-600 to-zinc-700 dark:from-zinc-500 dark:to-zinc-600 preserve-3d"
           style={{ 
             clipPath: 'polygon(20% 0%, 80% 0%, 90% 100%, 10% 100%)',
           }}
@@ -245,7 +297,8 @@ const Hero = () => {
 
         {/* Monitor Stand Base */}
         <div 
-          className="relative mx-auto w-48 md:w-72 h-4 md:h-6 bg-gradient-to-b from-zinc-600 to-zinc-700 dark:from-zinc-500 dark:to-zinc-600 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.3)]"
+          ref={baseStandRef}
+          className="relative mx-auto w-48 md:w-72 h-4 md:h-6 bg-gradient-to-b from-zinc-600 to-zinc-700 dark:from-zinc-500 dark:to-zinc-600 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.3)] preserve-3d"
         >
           <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-black/20 rounded-full" />
           <div className="absolute inset-x-8 top-1/2 h-px bg-zinc-500/50" />
