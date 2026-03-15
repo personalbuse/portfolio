@@ -10,64 +10,129 @@ const About = () => {
   const { t } = useLanguage();
   const sectionRef = useRef(null);
   const textRef = useRef(null);
+  const titleRef = useRef(null);
+  const paragraphsRef = useRef([]);
+  const statsRef = useRef(null);
 
   useEffect(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: 'top 80%',
-      }
-    });
+    const ctx = gsap.context(() => {
+      // Title reveal - faster
+      gsap.fromTo(titleRef.current,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 85%',
+          }
+        }
+      );
 
-    tl.fromTo(textRef.current.children, 
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 0.8, stagger: 0.2, ease: 'power3.out' }
-    );
+      // Paragraphs stagger - faster
+      paragraphsRef.current.forEach((p, i) => {
+        if (p) {
+          gsap.fromTo(p,
+            { opacity: 0, y: 20 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.4,
+              delay: 0.1 + i * 0.08,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: sectionRef.current,
+                start: 'top 85%',
+              }
+            }
+          );
+        }
+      });
+
+      // Stats cards entrance - faster
+      if (statsRef.current) {
+        const cards = statsRef.current.children;
+        gsap.fromTo(cards,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.4,
+            stagger: 0.08,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: statsRef.current,
+              start: 'top 90%',
+            }
+          }
+        );
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
   }, []);
 
+  const addToParagraphRefs = (el) => {
+    if (el && !paragraphsRef.current.includes(el)) {
+      paragraphsRef.current.push(el);
+    }
+  };
+
   return (
-    <section id="about" ref={sectionRef} className="section-padding bg-accent/5">
-      <div className="max-w-4xl mx-auto p-4">
+    <section id="about" ref={sectionRef} className="section-padding bg-accent/5 relative overflow-hidden">
+      {/* Decorative background elements */}
+      <div className="absolute top-20 right-10 w-72 h-72 bg-neon/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-20 left-10 w-64 h-64 bg-vibrant/5 rounded-full blur-[80px] pointer-events-none" />
+      
+      <div className="max-w-4xl mx-auto p-4 relative z-10">
         <div ref={textRef}>
-          <h2 className="text-4xl font-bold tracking-tighter mb-8 flex items-center gap-4">
-            <span className="text-muted text-sm tracking-widest uppercase">{t('about.sectionNumber')}</span>
-            {t('about.title')}
+          <h2 
+            ref={titleRef}
+            className="text-4xl md:text-5xl font-bold tracking-tighter mb-12 flex items-center gap-4"
+          >
+            <span className="text-neon text-sm tracking-widest uppercase font-mono">{t('about.sectionNumber')}</span>
+            <span className="bg-gradient-to-r from-foreground to-muted bg-clip-text text-transparent">{t('about.title')}</span>
           </h2>
-          <div className="space-y-6 text-muted leading-relaxed">
-            <p>
+          <div className="space-y-6 text-muted leading-relaxed text-lg">
+            <p ref={addToParagraphRefs} className="relative pl-4 border-l-2 border-neon/30 hover:border-neon transition-colors duration-300">
               <span className="text-foreground font-medium">{t('about.p1_highlight')}</span>{t('about.p1_end')}
             </p>
-            <p>
+            <p ref={addToParagraphRefs} className="relative pl-4 border-l-2 border-transparent hover:border-neon/30 transition-colors duration-300">
               {t('about.p2_start')}<span className="text-foreground font-medium">{t('about.p2_highlight')}</span>{t('about.p2_end')}
             </p>
-            <p>
+            <p ref={addToParagraphRefs} className="relative pl-4 border-l-2 border-transparent hover:border-neon/30 transition-colors duration-300">
               {t('about.p3_start')}<span className="text-foreground font-medium">{t('about.p3_highlight')}</span>{t('about.p3_end')}
             </p>
           </div>
           
-          <div className="mt-12 flex flex-wrap justify-center text-center gap-12 py-8 border-y border-accent/20">
-            <div>
-              <p className="text-[10px] uppercase tracking-widest text-muted mb-2">{t('about.location')}</p>
-              <div className="flex flex-col items-center gap-1">
-                <ColombiaFlag className="mb-1 opacity-80 w-6 h-4" />
-                <p className="font-medium text-xs leading-tight">{t('about.locationValue')}</p>
-                <p className="text-[10px] text-muted">{t('about.relocation')}</p>
+          <div ref={statsRef} className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 py-8">
+            <div className="group p-6 bg-background/50 backdrop-blur-sm border border-accent/20 rounded-xl hover:border-neon/50 transition-all duration-500 cursor-default">
+              <p className="text-[10px] uppercase tracking-widest text-neon mb-3 font-mono">{t('about.location')}</p>
+              <div className="flex flex-col items-start gap-2">
+                <ColombiaFlag className="opacity-80 w-8 h-6 drop-shadow-lg" />
+                <p className="font-bold text-lg leading-tight">{t('about.locationValue')}</p>
+                <p className="text-xs text-muted">{t('about.relocation')}</p>
               </div>
             </div>
-            <div>
-              <p className="text-[10px] uppercase tracking-widest text-muted mb-2">{t('about.language')}</p>
-              <p className="font-medium text-xs leading-tight">{t('about.langValue1')}<br />{t('about.langValue2')}</p>
+            <div className="group p-6 bg-background/50 backdrop-blur-sm border border-accent/20 rounded-xl hover:border-neon/50 transition-all duration-500 cursor-default">
+              <p className="text-[10px] uppercase tracking-widest text-neon mb-3 font-mono">{t('about.language')}</p>
+              <p className="font-bold text-lg leading-tight">{t('about.langValue1')}</p>
+              <p className="font-medium text-base text-muted mt-1">{t('about.langValue2')}</p>
             </div>
-            <div>
-              <p className="text-[10px] uppercase tracking-widest text-muted mb-2">{t('about.status')}</p>
-              <div className="relative inline-block mt-2 mb-2">
-                <p className="font-bold text-sm text-green-500 uppercase tracking-wider bg-green-500/10 px-5 py-2.5 rounded-full border border-green-500/30 shadow-[0_0_20px_rgba(34,197,94,0.15)]">
-                  {t('about.statusValue')}
-                </p>
-                {/* Subtle animated particles */}
-                <div className="status-particle" style={{ '--x': '20px', left: '15%', animationDelay: '0s' }}></div>
-                <div className="status-particle" style={{ '--x': '-15px', left: '50%', animationDelay: '0.7s' }}></div>
-                <div className="status-particle" style={{ '--x': '18px', left: '85%', animationDelay: '1.4s' }}></div>
+            <div className="group p-6 bg-background/50 backdrop-blur-sm border border-accent/20 rounded-xl hover:border-green-500/50 transition-all duration-500 cursor-default">
+              <p className="text-[10px] uppercase tracking-widest text-neon mb-3 font-mono">{t('about.status')}</p>
+              <div className="relative">
+                <div className="flex items-center gap-3">
+                  <span className="relative flex h-3 w-3">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                  </span>
+                  <p className="font-bold text-lg text-green-500 uppercase tracking-wider">
+                    {t('about.statusValue')}
+                  </p>
+                </div>
               </div>
             </div>
           </div>

@@ -1,6 +1,7 @@
 {
   "hero": {
-    "title": "Software Engineer"
+    "title": "Software Engineer",
+    "subtitle": "Backend Developer"
   },
   "nav": {
     "github": "GitHub",
