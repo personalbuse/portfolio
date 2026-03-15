@@ -87,11 +87,7 @@ const Hero = () => {
       tl.add(() => {
         if(titleRef.current) titleRef.current.innerText = titleText;
         if(nameRef.current) nameRef.current.innerText = nameText;
-      })
-      .fromTo(subtitleRef.current,
-        { opacity: 0, y: 10 },
-        { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out' }
-      );
+      });
 
       // Continuous floating animation for decorative elements
       floatingElementsRef.current.forEach((el, i) => {
@@ -146,12 +142,6 @@ const Hero = () => {
           rotation: (i) => (i % 2 === 0 ? 90 : -90),
           ease: 'none'
         }, 0)
-        // Subtitle fades
-        .to(subtitleRef.current, {
-          y: 60,
-          opacity: 0,
-          ease: 'none'
-        }, 0)
         // Glow expands
         .to(glowRef.current, {
           scale: 2,
@@ -187,47 +177,47 @@ const Hero = () => {
         ref={monitorRef}
         className="relative preserve-3d"
       >
-        {/* Floating decorative elements */}
+        {/* Floating technology tags */}
         <div 
           ref={addToFloatingRefs}
-          className="absolute -top-16 -left-24 w-16 h-16 border-2 border-neon/30 rounded-lg bg-neon/5 backdrop-blur-sm hidden md:flex items-center justify-center"
+          className="absolute -top-12 -left-20 px-3 py-1.5 border border-neon/40 rounded-lg bg-neon/10 backdrop-blur-sm hidden md:flex items-center justify-center"
         >
-          <span className="text-neon text-2xl font-mono">{'<>'}</span>
+          <span className="text-neon text-xs font-mono font-bold">React</span>
         </div>
         
         <div 
           ref={addToFloatingRefs}
-          className="absolute -top-8 -right-20 w-12 h-12 border-2 border-vibrant/30 rounded-full bg-vibrant/5 backdrop-blur-sm hidden md:flex items-center justify-center"
+          className="absolute -top-4 -right-24 px-3 py-1.5 border border-vibrant/40 rounded-lg bg-vibrant/10 backdrop-blur-sm hidden md:flex items-center justify-center"
         >
-          <span className="text-vibrant text-lg">*</span>
+          <span className="text-vibrant text-xs font-mono font-bold">PostgreSQL</span>
         </div>
         
         <div 
           ref={addToFloatingRefs}
-          className="absolute top-1/2 -left-28 w-20 h-8 border border-accent/50 rounded bg-accent/10 backdrop-blur-sm hidden md:flex items-center justify-center"
+          className="absolute top-1/2 -left-24 px-3 py-1.5 border border-accent/50 rounded-lg bg-accent/10 backdrop-blur-sm hidden md:flex items-center justify-center"
         >
-          <span className="text-xs text-muted font-mono">React</span>
+          <span className="text-xs text-foreground font-mono font-bold">Git</span>
         </div>
         
         <div 
           ref={addToFloatingRefs}
-          className="absolute top-1/3 -right-24 w-8 h-8 border border-neon/40 bg-neon/10 rounded hidden md:flex items-center justify-center"
+          className="absolute top-1/3 -right-20 px-3 py-1.5 border border-neon/40 bg-neon/10 rounded-lg hidden md:flex items-center justify-center"
         >
-          <span className="text-neon text-sm font-bold">//</span>
+          <span className="text-neon text-xs font-mono font-bold">Java</span>
         </div>
 
         <div 
           ref={addToFloatingRefs}
-          className="absolute -bottom-4 -left-16 w-14 h-14 border border-accent/30 rounded-lg bg-background/50 backdrop-blur-sm hidden md:flex items-center justify-center rotate-12"
+          className="absolute -bottom-8 -left-20 px-3 py-1.5 border border-accent/40 rounded-lg bg-background/50 backdrop-blur-sm hidden md:flex items-center justify-center"
         >
-          <span className="text-foreground/60 text-xl font-mono">{'{ }'}</span>
+          <span className="text-foreground text-xs font-mono font-bold">Django</span>
         </div>
 
         <div 
           ref={addToFloatingRefs}
-          className="absolute bottom-20 -right-20 w-10 h-10 border border-vibrant/30 rounded bg-vibrant/5 hidden md:flex items-center justify-center"
+          className="absolute bottom-24 -right-24 px-3 py-1.5 border border-vibrant/40 rounded-lg bg-vibrant/10 hidden md:flex items-center justify-center"
         >
-          <span className="text-vibrant text-lg font-bold">+</span>
+          <span className="text-vibrant text-xs font-mono font-bold">Python</span>
         </div>
 
         {/* Monitor Screen */}
@@ -301,9 +291,9 @@ const Hero = () => {
         {/* Subtitle below monitor */}
         <p 
           ref={subtitleRef}
-          className="text-center mt-8 text-sm md:text-base text-muted font-mono tracking-wider opacity-0"
+          className="text-center mt-8 text-sm md:text-base text-muted font-mono tracking-wider"
         >
-          Backend Developer
+          {t('hero.subtitle')}
         </p>
       </div>
 
