@@ -107,24 +107,26 @@ const About = () => {
             </p>
           </div>
           
-          <div ref={statsRef} className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 py-8">
-            <div className="group p-6 bg-background/50 backdrop-blur-sm border border-accent/20 rounded-xl hover:border-neon/50 transition-all duration-500 cursor-default">
+            <div ref={statsRef} className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 py-8">
+            <div className="group p-6 bg-background/50 backdrop-blur-sm border border-accent/20 rounded-xl hover:border-neon/50 transition-all duration-500 cursor-default text-center">
               <p className="text-[10px] uppercase tracking-widest text-neon mb-3 font-mono">{t('about.location')}</p>
-              <div className="flex flex-col items-start gap-2">
+              <div className="flex flex-col items-center gap-2">
                 <ColombiaFlag className="opacity-80 w-8 h-6 drop-shadow-lg" />
                 <p className="font-bold text-lg leading-tight">{t('about.locationValue')}</p>
                 <p className="text-xs text-muted">{t('about.relocation')}</p>
               </div>
             </div>
-            <div className="group p-6 bg-background/50 backdrop-blur-sm border border-accent/20 rounded-xl hover:border-neon/50 transition-all duration-500 cursor-default">
+            <div className="group p-6 bg-background/50 backdrop-blur-sm border border-accent/20 rounded-xl hover:border-neon/50 transition-all duration-500 cursor-default text-center">
               <p className="text-[10px] uppercase tracking-widest text-neon mb-3 font-mono">{t('about.language')}</p>
               <p className="font-bold text-lg leading-tight">{t('about.langValue1')}</p>
-              <p className="font-medium text-base text-muted mt-1">{t('about.langValue2')}</p>
+              <p className="font-medium text-base text-muted mt-1">
+                {t('about.langValue2').split('(')[0]}(<a href="https://cert.efset.org/hBScQc" target="_blank" rel="noopener noreferrer" className="text-neon hover:text-neon/80 transition-colors">{t('about.langValue2').match(/\((.*)\)/)?.[1] || 'Certificado EF'}</a>)
+              </p>
             </div>
-            <div className="group p-6 bg-background/50 backdrop-blur-sm border border-accent/20 rounded-xl hover:border-green-500/50 transition-all duration-500 cursor-default">
+            <div className="group p-6 bg-background/50 backdrop-blur-sm border border-accent/20 rounded-xl hover:border-green-500/50 transition-all duration-500 cursor-default text-center">
               <p className="text-[10px] uppercase tracking-widest text-neon mb-3 font-mono">{t('about.status')}</p>
               <div className="relative">
-                <div className="flex items-center gap-3">
+                <div className="flex items-center justify-center gap-3">
                   <span className="relative flex h-3 w-3">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
