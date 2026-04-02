@@ -97,7 +97,7 @@ const Hero = () => {
         </p>
         
         <div className="word-container mb-8">
-          <h1 className="word text-5xl md:text-8xl font-black tracking-tight leading-tight text-foreground drop-shadow-sm">
+          <h1 className="word text-4xl sm:text-6xl md:text-8xl font-black tracking-tight leading-tight text-foreground drop-shadow-sm">
             <span>S</span>
             <span>E</span>
             <span>R</span>

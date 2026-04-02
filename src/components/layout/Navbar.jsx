@@ -51,7 +51,7 @@ const Navbar = () => {
         </a>
 
         {/* Desktop Nav */}
-        <ul className="hidden md:flex space-x-4 items-center">
+        <nav className="hidden md:flex space-x-4 items-center" aria-label="Main navigation">
             <a href="https://github.com/personalbuse" target="_blank" rel="noreferrer" className="flex items-center gap-2 group">
               <Github className="w-5 h-5 text-muted group-hover:text-neon transition-colors" />
               <span className="text-sm uppercase tracking-widest text-muted group-hover:text-foreground transition-colors">GitHub</span>
@@ -65,6 +65,7 @@ const Navbar = () => {
             {/* Theme Toggle */}
             <button
               onClick={() => setDarkMode(!darkMode)}
+              aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
               className="flex items-center justify-center w-8 h-8 border border-accent hover:border-neon transition-all"
             >
               {darkMode ? <Moon className="w-4 h-4 text-foreground" /> : <Sun className="w-4 h-4 text-foreground" />}
@@ -73,6 +74,7 @@ const Navbar = () => {
             {/* Language Toggle */}
             <button
               onClick={toggleLanguage}
+              aria-label={`Switch to ${language === 'en' ? 'Spanish' : 'English'}`}
               className="flex items-center gap-1 text-xs uppercase tracking-widest font-bold border border-accent px-3 py-1 hover:border-neon transition-all"
             >
               <span className={language === 'en' ? 'text-neon' : 'text-muted'}>EN</span>
@@ -90,10 +92,15 @@ const Navbar = () => {
               <Download className="w-4 h-4" />
               <span>CV</span>
             </a>
-        </ul>
+        </nav>
 
         {/* Mobile Toggle */}
-        <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
+        <button 
+          className="md:hidden" 
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={isOpen}
+        >
           {isOpen ? <X /> : <Menu />}
         </button>
       </div>
@@ -113,6 +120,7 @@ const Navbar = () => {
             {/* Mobile Theme Toggle */}
             <button
               onClick={() => setDarkMode(!darkMode)}
+              aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
               className="flex items-center gap-2 text-lg uppercase tracking-widest font-bold border border-accent px-6 py-2 hover:border-neon transition-all mt-4"
             >
               {darkMode ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
@@ -121,6 +129,7 @@ const Navbar = () => {
             {/* Mobile Language Toggle */}
             <button
               onClick={() => { toggleLanguage(); setIsOpen(false); }}
+              aria-label={`Switch to ${language === 'en' ? 'Spanish' : 'English'}`}
               className="flex items-center gap-2 text-lg uppercase tracking-widest font-bold border border-accent px-6 py-2 hover:border-neon transition-all mt-4"
             >
               <span className={language === 'en' ? 'text-neon' : 'text-muted'}>EN</span>

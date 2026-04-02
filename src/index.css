@@ -9,7 +9,7 @@
   --background: #ffffff;
   --foreground: #0a0a0a;
   --accent: #e5e5e5;
-  --muted: #737373;
+  --muted: #525252;
   --cursor-color: #0a0a0a;
   --highlight-bg: rgba(0, 0, 0, 0.05);
   --highlight-border: #0a0a0a;
@@ -22,7 +22,7 @@
   --background: #0a0a0a;
   --foreground: #ffffff;
   --accent: #333333;
-  --muted: #737373;
+  --muted: #a3a3a3;
   --cursor-color: #ffffff;
   --highlight-bg: rgba(255, 255, 255, 0.05);
   --highlight-border: #ffffff;
@@ -396,7 +396,7 @@ html:has(.lenis) {
 .word span {
   cursor: pointer;
   display: inline-block;
-  font-size: 100px;
+  font-size: clamp(2rem, 12vw, 100px);
   user-select: none;
   line-height: 0.8;
 }
