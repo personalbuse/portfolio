@@ -22,11 +22,11 @@ const Contact = () => {
         {
           opacity: 1,
           y: 0,
-          duration: 0.5,
+          duration: 0.4,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: 'top 85%',
+            start: 'top 95%',
           }
         }
       );
@@ -39,12 +39,12 @@ const Contact = () => {
             {
               opacity: 1,
               y: 0,
-              duration: 0.4,
-              delay: 0.1 + i * 0.1,
+              duration: 0.3,
+              delay: 0.05 + i * 0.08,
               ease: 'power3.out',
               scrollTrigger: {
                 trigger: infoRef.current,
-                start: 'top 90%',
+                start: 'top 95%',
               }
             }
           );
@@ -62,19 +62,16 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" ref={sectionRef} className="section-padding relative overflow-hidden">
-      {/* Large background gradients */}
-      <div className="absolute inset-0 bg-gradient-to-b from-accent/5 via-transparent to-background" />
+    <section id="contact" ref={sectionRef} className="section-padding bg-background relative overflow-hidden">
+      {/* Background decorations */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-neon/5 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-vibrant/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-neon/5 rounded-full blur-[100px] pointer-events-none" />
       
       <div className="max-w-7xl mx-auto relative z-10">
-        <div ref={titleRef} className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-6 flex flex-col items-center gap-2">
+        <div ref={titleRef} className="text-center mb-20">
+          <h2 className="text-4xl md:text-7xl font-black tracking-tighter mb-8 uppercase flex items-center justify-center gap-4">
+            {t('contact.title')}
             <span className="text-neon text-sm tracking-widest uppercase font-mono">{t('contact.sectionNumber')}</span>
-            <span className="bg-gradient-to-r from-foreground via-neon to-foreground bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient">
-              {t('contact.title')}
-            </span>
           </h2>
           <p className="text-xl text-muted max-w-lg mx-auto">
             {t('contact.subtitle')}
@@ -82,17 +79,20 @@ const Contact = () => {
         </div>
 
         <div ref={infoRef} className="max-w-3xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-6 mb-12">
+          <div className="grid md:grid-cols-2 gap-8">
             {/* Email Card */}
             <div 
               ref={addToCardsRef}
-              className="group p-8 bg-background/50 backdrop-blur-sm border border-accent/30 rounded-2xl hover:border-neon/50 hover:shadow-[0_0_40px_rgba(139,92,246,0.15)] transition-all duration-500 cursor-pointer"
+              className="group border border-foreground/10 p-8 hover:border-neon transition-all duration-500 bg-background relative overflow-hidden cursor-pointer"
             >
+              <div className="absolute top-0 left-0 w-2 h-0 bg-neon group-hover:h-full transition-all duration-500" />
+              
               <div className="flex flex-col items-center text-center">
-                <div className="w-16 h-16 rounded-2xl bg-neon/10 flex items-center justify-center mb-6 group-hover:bg-neon/20 group-hover:scale-110 transition-all duration-300">
-                  <Mail className="w-8 h-8 text-neon" />
+                <span className="text-4xl opacity-20 font-black italic mb-4">01</span>
+                <div className="p-3 bg-neon/10 rounded-lg mb-3">
+                  <Mail className="w-6 h-6 text-neon" />
                 </div>
-                <p className="text-xs uppercase tracking-widest text-neon font-mono mb-2">{t('contact.emailLabel')}</p>
+                <p className="text-[10px] md:text-xs font-mono border border-foreground/10 uppercase tracking-widest text-muted mb-2 px-2 py-1">{t('contact.emailLabel')}</p>
                 <a 
                   href="mailto:sergioburbanom@gmail.com" 
                   className="font-bold text-lg md:text-xl text-foreground hover:text-neon transition-colors break-all"
@@ -105,15 +105,18 @@ const Contact = () => {
             {/* Location Card */}
             <div 
               ref={addToCardsRef}
-              className="group p-8 bg-background/50 backdrop-blur-sm border border-accent/30 rounded-2xl hover:border-neon/50 hover:shadow-[0_0_40px_rgba(139,92,246,0.15)] transition-all duration-500 cursor-default"
+              className="group border border-foreground/10 p-8 hover:border-neon transition-all duration-500 bg-background relative overflow-hidden cursor-default"
             >
+              <div className="absolute top-0 left-0 w-2 h-0 bg-neon group-hover:h-full transition-all duration-500" />
+              
               <div className="flex flex-col items-center text-center">
-                <div className="w-16 h-16 rounded-2xl bg-accent/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-300 overflow-hidden">
-                  <ColombiaFlag className="w-10 h-7" />
+                <span className="text-4xl opacity-20 font-black italic mb-4">02</span>
+                <div className="p-3 bg-accent/20 rounded-lg mb-3">
+                  <ColombiaFlag className="w-8 h-6" />
                 </div>
-                <p className="text-xs uppercase tracking-widest text-neon font-mono mb-2">{t('contact.locationLabel')}</p>
-                <p className="font-bold text-lg leading-relaxed">
-                  Pamplona / Sogamoso
+                <p className="text-[10px] md:text-xs font-mono border border-foreground/10 uppercase tracking-widest text-muted mb-2 px-2 py-1">{t('contact.locationLabel')}</p>
+                <p className="font-bold text-lg leading-relaxed text-foreground">
+                  Colombia
                 </p>
               </div>
             </div>

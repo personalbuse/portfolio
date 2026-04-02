@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import useGitHub from '../../hooks/useGitHub';
-import { ExternalLink, Star, Code2, Github, Cpu } from 'lucide-react';
+import { Code2, Github, Cpu, ExternalLink } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -31,17 +31,16 @@ const Projects = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Title entrance - faster
       gsap.fromTo(titleRef.current,
         { opacity: 0, y: 30 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.5,
+          duration: 0.4,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: 'top 85%',
+            start: 'top 95%',
           }
         }
       );
@@ -53,12 +52,12 @@ const Projects = () => {
           { 
             opacity: 1, 
             y: 0,
-            duration: 0.4, 
-            stagger: 0.1, 
+            duration: 0.3, 
+            stagger: 0.08, 
             ease: 'power3.out',
             scrollTrigger: {
               trigger: featuredRef.current,
-              start: 'top 85%',
+              start: 'top 95%',
             }
           }
         );
@@ -70,7 +69,6 @@ const Projects = () => {
 
   useEffect(() => {
     if (!loading && !error && gridRef.current) {
-      // Repository cards - faster
       gsap.fromTo(gridRef.current.children,
         { opacity: 0, y: 30 },
         { 
@@ -81,7 +79,7 @@ const Projects = () => {
           ease: 'power3.out',
           scrollTrigger: {
             trigger: gridRef.current,
-            start: 'top 90%',
+            start: 'top 95%',
           }
         }
       );
@@ -107,7 +105,7 @@ const Projects = () => {
   const featuredProjects = t('projects.featured') || [];
 
   return (
-    <section id="projects" ref={sectionRef} className="section-padding bg-accent/5 relative overflow-hidden">
+    <section id="projects" ref={sectionRef} className="section-padding bg-background relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-neon/5 rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] bg-vibrant/5 rounded-full blur-[120px] pointer-events-none" />
@@ -115,9 +113,10 @@ const Projects = () => {
       <div className="max-w-7xl mx-auto relative z-10">
         <div ref={titleRef} className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4 flex items-center gap-4">
+            <h2 className="text-4xl md:text-7xl font-black tracking-tighter mb-8 uppercase flex items-center gap-4">
+              {t('projects.title')}
               <span className="text-neon text-sm tracking-widest uppercase font-mono">{t('projects.sectionNumber')}</span>
-              <span className="bg-gradient-to-r from-foreground to-muted bg-clip-text text-transparent">{t('projects.title')}</span>
+              <div className="h-1 flex-grow bg-foreground/10 hidden md:block" />
             </h2>
             <p className="text-muted text-lg">{t('projects.subtitle')}</p>
           </div>
@@ -131,24 +130,21 @@ const Projects = () => {
                 href={project.link || '#'}
                 target={project.link ? '_blank' : '_self'}
                 rel="noreferrer"
-                className="group p-8 bg-background/50 backdrop-blur-sm border border-accent/30 rounded-2xl hover:border-neon/50 hover:shadow-[0_0_50px_rgba(139,92,246,0.15)] transition-all duration-500 relative overflow-hidden"
+                className="group border border-foreground/10 p-8 hover:border-neon transition-all duration-500 bg-background relative overflow-hidden"
               >
-                {/* Animated gradient border effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-neon/0 via-neon/20 to-neon/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 rounded-2xl" />
+                <div className="absolute top-0 left-0 w-2 h-0 bg-neon group-hover:h-full transition-all duration-500" />
                 
                 <div className="relative z-10">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="p-2 bg-neon/10 rounded-lg group-hover:bg-neon/20 transition-colors">
-                      <Cpu className="w-5 h-5 text-neon" />
-                    </div>
+                    <span className="text-4xl opacity-20 font-black italic">{(index + 1).toString().padStart(2, '0')}</span>
                     <span className="text-xs uppercase tracking-widest text-neon font-mono">{t('projects.featuredLabel')}</span>
                   </div>
                   
-                  <h3 className="text-2xl font-bold tracking-tight mb-4 group-hover:text-neon transition-colors duration-300">
+                  <h3 className="text-xl font-bold uppercase tracking-widest text-foreground group-hover:text-neon transition-colors duration-300">
                     {project.name}
                   </h3>
                   
-                  <p className="text-muted mb-6 leading-relaxed">
+                  <p className="text-muted mt-4 mb-6 leading-relaxed">
                     {project.description}
                   </p>
                   
@@ -206,39 +202,19 @@ const Projects = () => {
                 href={repo.html_url}
                 target="_blank"
                 rel="noreferrer"
-                className="group p-6 bg-background/50 backdrop-blur-sm border border-accent/30 rounded-xl hover:border-neon/40 hover:shadow-[0_0_30px_rgba(139,92,246,0.1)] transition-all duration-500 relative overflow-hidden"
+                className="group border border-foreground/10 p-6 hover:border-neon transition-all duration-500 bg-background relative overflow-hidden"
               >
-                {/* Hover shine effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/0 via-white/5 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute top-0 left-0 w-1 h-0 bg-neon group-hover:h-full transition-all duration-500" />
                 
-                <div className="relative z-10 flex flex-col h-full">
-                  <div className="flex justify-between items-start mb-5">
-                    <div className="p-2 bg-accent/20 rounded-lg group-hover:bg-neon/10 transition-colors">
-                      <Github className="w-6 h-6 text-muted group-hover:text-neon transition-colors" />
-                    </div>
-                    <div className="flex items-center gap-1.5 text-xs text-muted bg-accent/20 px-2 py-1 rounded-full">
-                      <Star className="w-3 h-3" />
-                      <span>{repo.stargazers_count}</span>
-                    </div>
-                  </div>
-                  
-                  <h3 className="text-lg font-bold tracking-tight mb-3 group-hover:text-neon transition-colors capitalize">
+                <div className="relative z-10">
+                  <h3 className="text-lg font-bold uppercase tracking-widest text-foreground group-hover:text-neon transition-colors duration-300 mb-4 capitalize">
                     {repo.name.replace(/-/g, ' ')}
                   </h3>
                   
-                  <div className="text-sm text-muted mb-6 space-y-3 flex-grow">
-                    <p className="line-clamp-2 leading-relaxed">
-                      {repo.description || t('projects.noDescription')}
-                    </p>
-                    <div className="pt-3 border-t border-accent/20 flex items-center gap-2 text-[10px] uppercase tracking-wider">
-                      <span className="text-neon font-bold px-2 py-0.5 bg-neon/10 rounded">{repo.language || 'Code'}</span>
-                      <span className="opacity-30">|</span>
-                      <span className="text-muted/70">{formatDate(repo.updated_at)}</span>
-                    </div>
-                  </div>
-                  
-                  <div className="flex justify-end items-center mt-auto">
-                    <ExternalLink className="w-4 h-4 opacity-30 group-hover:opacity-100 group-hover:text-neon group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+                  <div className="flex items-center gap-3 text-xs uppercase tracking-wider">
+                    <span className="px-2 py-1 text-[10px] md:text-xs font-mono border border-foreground/10 uppercase tracking-widest text-muted">{repo.language || 'Code'}</span>
+                    <span className="opacity-30">|</span>
+                    <span className="text-muted">{formatDate(repo.updated_at)}</span>
                   </div>
                 </div>
               </a>

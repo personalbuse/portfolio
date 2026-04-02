@@ -1,7 +1,7 @@
 {
   "hero": {
-    "title": "Software Engineer",
-    "subtitle": "Backend Developer"
+    "title": "Ingeniero de Sistemas",
+    "subtitle": "Desarrollador Backend"
   },
   "nav": {
     "github": "GitHub",
@@ -45,7 +45,15 @@
       "Database": ["PostgreSQL", "MySQL"],
       "Tools": ["Linux", "Git", "Docker"]
     },
-    "others": ["Compromiso", "Innovación", "Pulcritud", "Seguridad"]
+    "softSkills": [
+      { "es": "Compromiso", "en": "Commitment" },
+      { "es": "Pulcritud", "en": "Neatness" },
+      { "es": "Seguridad", "en": "Security" },
+      { "es": "Entusiasmo", "en": "Enthusiasm" },
+      { "es": "Resolución", "en": "Problem Solving" },
+      { "es": "Liderazgo", "en": "Leadership" },
+      { "es": "Calidad", "en": "Quality" }
+    ]
   },
   "projects": {
     "sectionNumber": "03.",

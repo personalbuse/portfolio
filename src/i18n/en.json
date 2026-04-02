@@ -1,6 +1,6 @@
 {
   "hero": {
-    "title": "Software Engineer",
+    "title": "Engineer System",
     "subtitle": "Backend Developer"
   },
   "nav": {
@@ -45,7 +45,15 @@
       "Database": ["PostgreSQL", "MySQL"],
       "Tools": ["Linux", "Git", "Docker"]
     },
-    "others": ["Commitment", "Innovation", "Neatness", "Security"]
+    "softSkills": [
+      { "es": "Compromiso", "en": "Commitment" },
+      { "es": "Pulcritud", "en": "Neatness" },
+      { "es": "Seguridad", "en": "Security" },
+      { "es": "Entusiasmo", "en": "Enthusiasm" },
+      { "es": "Resolución", "en": "Problem Solving" },
+      { "es": "Liderazgo", "en": "Leadership" },
+      { "es": "Calidad", "en": "Quality" }
+    ]
   },
   "projects": {
     "sectionNumber": "03.",

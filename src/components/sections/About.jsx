@@ -22,11 +22,11 @@ const About = () => {
         {
           opacity: 1,
           y: 0,
-          duration: 0.5,
+          duration: 0.4,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: 'top 85%',
+            start: 'top 95%',
           }
         }
       );
@@ -39,12 +39,12 @@ const About = () => {
             {
               opacity: 1,
               y: 0,
-              duration: 0.4,
-              delay: 0.1 + i * 0.08,
+              duration: 0.3,
+              delay: 0.05 + i * 0.05,
               ease: 'power3.out',
               scrollTrigger: {
                 trigger: sectionRef.current,
-                start: 'top 85%',
+                start: 'top 95%',
               }
             }
           );
@@ -59,12 +59,12 @@ const About = () => {
           {
             opacity: 1,
             y: 0,
-            duration: 0.4,
-            stagger: 0.08,
+            duration: 0.3,
+            stagger: 0.05,
             ease: 'power3.out',
             scrollTrigger: {
-              trigger: statsRef.current,
-              start: 'top 90%',
+              trigger: sectionRef.current,
+              start: 'top 95%',
             }
           }
         );
@@ -81,7 +81,7 @@ const About = () => {
   };
 
   return (
-    <section id="about" ref={sectionRef} className="section-padding bg-accent/5 relative overflow-hidden">
+    <section id="about" ref={sectionRef} className="section-padding bg-background relative overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute top-20 right-10 w-72 h-72 bg-neon/5 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-20 left-10 w-64 h-64 bg-vibrant/5 rounded-full blur-[80px] pointer-events-none" />
@@ -90,41 +90,45 @@ const About = () => {
         <div ref={textRef}>
           <h2 
             ref={titleRef}
-            className="text-4xl md:text-5xl font-bold tracking-tighter mb-12 flex items-center gap-4"
+            className="text-4xl md:text-7xl font-black tracking-tighter mb-20 uppercase flex items-center gap-4"
           >
+            {t('about.title')}
             <span className="text-neon text-sm tracking-widest uppercase font-mono">{t('about.sectionNumber')}</span>
-            <span className="bg-gradient-to-r from-foreground to-muted bg-clip-text text-transparent">{t('about.title')}</span>
+            <div className="h-1 flex-grow bg-foreground/10 hidden md:block" />
           </h2>
           <div className="space-y-6 text-muted leading-relaxed text-lg">
-            <p ref={addToParagraphRefs} className="relative pl-4 border-l-2 border-neon/30 hover:border-neon transition-colors duration-300">
+            <p ref={addToParagraphRefs} className="relative pl-4 border-l-2 border-foreground/10 hover:border-neon transition-colors duration-300">
               <span className="text-foreground font-medium">{t('about.p1_highlight')}</span>{t('about.p1_end')}
             </p>
-            <p ref={addToParagraphRefs} className="relative pl-4 border-l-2 border-transparent hover:border-neon/30 transition-colors duration-300">
+            <p ref={addToParagraphRefs} className="relative pl-4 border-l-2 border-foreground/10 hover:border-neon transition-colors duration-300">
               {t('about.p2_start')}<span className="text-foreground font-medium">{t('about.p2_highlight')}</span>{t('about.p2_end')}
             </p>
-            <p ref={addToParagraphRefs} className="relative pl-4 border-l-2 border-transparent hover:border-neon/30 transition-colors duration-300">
+            <p ref={addToParagraphRefs} className="relative pl-4 border-l-2 border-foreground/10 hover:border-neon transition-colors duration-300">
               {t('about.p3_start')}<span className="text-foreground font-medium">{t('about.p3_highlight')}</span>{t('about.p3_end')}
             </p>
           </div>
           
-            <div ref={statsRef} className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 py-8">
-            <div className="group p-6 bg-background/50 backdrop-blur-sm border border-accent/20 rounded-xl hover:border-neon/50 transition-all duration-500 cursor-default text-center">
-              <p className="text-[10px] uppercase tracking-widest text-neon mb-3 font-mono">{t('about.location')}</p>
+            <div ref={statsRef} className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="group border border-foreground/10 p-8 hover:border-neon transition-all duration-500 bg-background relative overflow-hidden cursor-default text-center">
+              <div className="absolute top-0 left-0 w-2 h-0 bg-neon group-hover:h-full transition-all duration-500" />
+              <p className="text-[10px] uppercase tracking-widest text-muted mb-3 font-mono">{t('about.location')}</p>
               <div className="flex flex-col items-center gap-2">
                 <ColombiaFlag className="opacity-80 w-8 h-6 drop-shadow-lg" />
-                <p className="font-bold text-lg leading-tight">{t('about.locationValue')}</p>
+                <p className="font-bold text-lg leading-tight text-foreground">{t('about.locationValue')}</p>
                 <p className="text-xs text-muted">{t('about.relocation')}</p>
               </div>
             </div>
-            <div className="group p-6 bg-background/50 backdrop-blur-sm border border-accent/20 rounded-xl hover:border-neon/50 transition-all duration-500 cursor-default text-center">
-              <p className="text-[10px] uppercase tracking-widest text-neon mb-3 font-mono">{t('about.language')}</p>
-              <p className="font-bold text-lg leading-tight">{t('about.langValue1')}</p>
+            <div className="group border border-foreground/10 p-8 hover:border-neon transition-all duration-500 bg-background relative overflow-hidden cursor-default text-center">
+              <div className="absolute top-0 left-0 w-2 h-0 bg-neon group-hover:h-full transition-all duration-500" />
+              <p className="text-[10px] uppercase tracking-widest text-muted mb-3 font-mono">{t('about.language')}</p>
+              <p className="font-bold text-lg leading-tight text-foreground">{t('about.langValue1')}</p>
               <p className="font-medium text-base text-muted mt-1">
                 {t('about.langValue2').split('(')[0]}(<a href="https://cert.efset.org/hBScQc" target="_blank" rel="noopener noreferrer" className="text-neon hover:text-neon/80 transition-colors">{t('about.langValue2').match(/\((.*)\)/)?.[1] || 'Certificado EF'}</a>)
               </p>
             </div>
-            <div className="group p-6 bg-background/50 backdrop-blur-sm border border-accent/20 rounded-xl hover:border-green-500/50 transition-all duration-500 cursor-default text-center">
-              <p className="text-[10px] uppercase tracking-widest text-neon mb-3 font-mono">{t('about.status')}</p>
+            <div className="group border border-foreground/10 p-8 hover:border-green-500 transition-all duration-500 bg-background relative overflow-hidden cursor-default text-center">
+              <div className="absolute top-0 left-0 w-2 h-0 bg-green-500 group-hover:h-full transition-all duration-500" />
+              <p className="text-[10px] uppercase tracking-widest text-muted mb-3 font-mono">{t('about.status')}</p>
               <div className="relative">
                 <div className="flex items-center justify-center gap-3">
                   <span className="relative flex h-3 w-3">

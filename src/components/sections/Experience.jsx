@@ -21,11 +21,11 @@ const Experience = () => {
         {
           opacity: 1,
           y: 0,
-          duration: 0.5,
+          duration: 0.4,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: 'top 85%',
+            start: 'top 95%',
           }
         }
       );
@@ -36,11 +36,11 @@ const Experience = () => {
           { scaleY: 0, transformOrigin: 'top center' },
           {
             scaleY: 1,
-            duration: 0.8,
+            duration: 0.6,
             ease: 'power2.out',
             scrollTrigger: {
               trigger: expRef.current,
-              start: 'top 85%',
+              start: 'top 95%',
             }
           }
         );
@@ -54,12 +54,12 @@ const Experience = () => {
             {
               opacity: 1,
               y: 0,
-              duration: 0.4,
-              delay: 0.1 + i * 0.1,
+              duration: 0.3,
+              delay: 0.05 + i * 0.08,
               ease: 'power3.out',
               scrollTrigger: {
                 trigger: expRef.current,
-                start: 'top 85%',
+                start: 'top 95%',
               }
             }
           );
@@ -80,7 +80,7 @@ const Experience = () => {
   const educationList = t('experience.educationList');
 
   return (
-    <section id="experience" ref={sectionRef} className="section-padding relative overflow-hidden">
+    <section id="experience" ref={sectionRef} className="section-padding bg-background relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute top-1/4 left-0 w-96 h-96 bg-neon/5 rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-vibrant/5 rounded-full blur-[120px] pointer-events-none" />
@@ -88,17 +88,18 @@ const Experience = () => {
       <div className="max-w-7xl mx-auto relative z-10">
         <h2 
           ref={titleRef}
-          className="text-4xl md:text-5xl font-bold tracking-tighter mb-16 flex items-center gap-4"
+          className="text-4xl md:text-7xl font-black tracking-tighter mb-20 uppercase flex items-center gap-4"
         >
+          {t('experience.title')}
           <span className="text-neon text-sm tracking-widest uppercase font-mono">{t('experience.sectionNumber')}</span>
-          <span className="bg-gradient-to-r from-foreground to-muted bg-clip-text text-transparent">{t('experience.title')}</span>
+          <div className="h-1 flex-grow bg-foreground/10 hidden md:block" />
         </h2>
 
         <div className="relative">
-          {/* Animated timeline line */}
+          {/* Timeline line */}
           <div 
             ref={timelineRef}
-            className="absolute left-[11px] top-0 bottom-0 w-[2px] bg-gradient-to-b from-neon via-accent to-transparent hidden md:block"
+            className="absolute left-[11px] top-0 bottom-0 w-[2px] bg-foreground/10 hidden md:block"
           />
           
           <div ref={expRef} className="space-y-8 md:space-y-12">
@@ -108,28 +109,20 @@ const Experience = () => {
                 <div 
                   key={index} 
                   ref={addToExpItemsRef}
-                  className={`relative pl-8 md:pl-12 group ${
-                    isCupido 
-                      ? 'bg-gradient-to-r from-[var(--highlight-bg)] to-transparent p-6 md:p-8 rounded-xl border border-[var(--highlight-border)]/30 shadow-[0_0_40px_var(--highlight-ring)]' 
-                      : 'hover:bg-accent/5 p-4 md:p-6 rounded-xl transition-colors duration-300'
-                  }`}
+                  className="relative pl-8 md:pl-12 group border border-foreground/10 p-8 hover:border-neon transition-all duration-500 bg-background"
                 >
                   {/* Timeline dot */}
                   <div 
-                    className={`timeline-dot absolute left-0 top-6 md:top-8 w-6 h-6 rounded-full flex items-center justify-center ${
-                      isCupido 
-                        ? 'bg-[var(--highlight-border)] shadow-[0_0_20px_var(--highlight-border)]' 
-                        : 'bg-accent/30 group-hover:bg-neon/30 border-2 border-accent group-hover:border-neon'
-                    } transition-all duration-300`}
+                    className="absolute left-0 top-8 w-6 h-6 rounded-full flex items-center justify-center bg-background border-2 border-foreground/20 group-hover:border-neon transition-all duration-300"
                   >
-                    <div className={`w-2 h-2 rounded-full ${isCupido ? 'bg-white' : 'bg-foreground group-hover:bg-neon'} transition-colors`} />
+                    <div className="w-2 h-2 rounded-full bg-foreground group-hover:bg-neon transition-colors" />
                   </div>
                   
                   <div className="space-y-3">
                     <div className="flex items-center gap-3 flex-wrap">
-                      <span className="text-xs uppercase tracking-widest text-neon font-mono bg-neon/10 px-3 py-1 rounded-full">{exp.period}</span>
+                      <span className="text-[10px] md:text-xs font-mono border border-foreground/10 uppercase tracking-widest text-muted px-3 py-1">{exp.period}</span>
                       {isCupido && (
-                        <span className="text-[9px] uppercase tracking-[0.2em] font-bold text-[var(--highlight-text)] bg-[var(--highlight-accent)] px-3 py-1 rounded-full border border-[var(--highlight-border)] animate-pulse">
+                        <span className="text-[9px] uppercase tracking-[0.2em] font-bold text-neon bg-neon/10 px-3 py-1 rounded-full border border-neon/20">
                           {t('experience.featured')}
                         </span>
                       )}

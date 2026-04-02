@@ -1,5 +1,6 @@
 import { HelmetProvider } from 'react-helmet-async';
 import { LanguageProvider, useLanguage } from './context/LanguageContext';
+import { useLenis } from './hooks/useLenis';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import CustomCursor from './components/common/CustomCursor';
@@ -11,9 +12,11 @@ import Experience from './components/sections/Experience';
 import Education from './components/sections/Education';
 import Contact from './components/sections/Contact';
 import SEO from './components/common/SEO';
+import TopographicBackground from './components/common/TopographicBackground';
 
 function AppContent() {
   const { t } = useLanguage();
+  useLenis();
 
   return (
     <HelmetProvider>
@@ -22,6 +25,9 @@ function AppContent() {
         description={t('seo.description')} 
       />
       <div className="relative min-h-screen bg-background text-foreground selection:bg-neon selection:text-black">
+        {/* Global Topographic Background */}
+        <TopographicBackground />
+        
         {/* Ambient Neon Background */}
         <div className="fixed inset-0 overflow-hidden pointer-events-none z-0" aria-hidden="true">
           <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-neon/10 blur-[80px] rounded-full" style={{ willChange: 'transform' }}></div>

@@ -1,20 +1,26 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 
 const useGitHub = (username) => {
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const fetchRepos = async () => {
       try {
-        const response = await axios.get(`https://api.github.com/users/${username}/repos?sort=updated&per_page=10`);
-        // Filter out forks and potentially pin some repos by name if needed
-        const filteredRepos = response.data.filter(repo => !repo.fork);
-        setRepos(filteredRepos);
+        setLoading(true);
+        const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=30`);
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch repos');
+        }
+        
+        const data = await response.json();
+        setRepos(data);
+        setError(false);
       } catch (err) {
-        setError(err);
+        console.error('GitHub API error:', err);
+        setError(true);
       } finally {
         setLoading(false);
       }
