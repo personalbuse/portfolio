@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X, Github, Linkedin, Sun, Moon, Download } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 
-const CV_URL = 'https://drive.google.com/file/d/11zEgN4Sub_BUif018XQGy28XYInDwHC9/view?usp=sharing';
+const CV_URL = 'https://drive.google.com/file/d/1yVwMv601SSXr1ciZsx6jSw9o6rFo_zj6/view';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
