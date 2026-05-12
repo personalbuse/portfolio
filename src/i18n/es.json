@@ -23,7 +23,7 @@
     "p1_end": " en noveno semestre con enfoque en desarrollo de software backend. Domino Python y Java para el desarrollo de aplicaciones, con experiencia en APIs REST, bases de datos PostgreSQL y MySQL, y sistemas Linux. Capacidad de aprendizaje rápido y adaptación a nuevas tecnologías.",
     "p2_start": "Formado en la ",
     "p2_highlight": "Universidad de Pamplona",
-    "p2_end": ", he desarrollado proyectos técnicos que incluyen desarrollo backend con Spring Boot, manipulación de datos, y despliegue en entornos cloud. Mis habilidades incluyen control de versiones con Git y trabajo en sistemas operativos Linux.",
+    "p2_end": ", he desarrollado proyectos técnicos que incluyen desarrollo backend con FastAPI y Django, manipulación de datos, y despliegue en entornos cloud. Mis habilidades incluyen control de versiones con Git y trabajo en sistemas operativos Linux.",
     "p3_start": "Busco una ",
     "p3_highlight": "práctica profesional",
     "p3_end": " como desarrollador backend para aplicar mis conocimientos en Java y Python, contribuyendo a proyectos reales mientras continúo mi desarrollo profesional."
@@ -74,6 +74,13 @@
         "tech": ["React", "PostgreSQL", "FastAPI"],
         "metrics": "Reducción de procesamiento manual en 40%",
         "link": ""
+      },
+      {
+        "name": "Simulador de Compra y Venta de Acciones (Proyecto de Aula)",
+        "description": "Plataforma web full-stack de simulación bursátil para que principiantes aprendan a invertir en la bolsa de valores sin usar dinero real. Incluye precios en tiempo real, compra/venta simulada, seguimiento de portafolio, historial de transacciones, conversión USD/COP, autenticación JWT con 2FA y módulos educativos.",
+        "tech": ["React", "TypeScript", "FastAPI", "PostgreSQL", "Docker"],
+        "metrics": "34 endpoints REST API impulsando un simulador de bolsa en tiempo real con 2FA y soporte bilingüe",
+        "link": "https://github.com/personalbuse/finanzas-frontend"
       }
     ],
     "all": "Todos",

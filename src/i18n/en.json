@@ -23,7 +23,7 @@
     "p1_end": " in 9th semester focused on backend software development. Proficient in Python and Java for application development, with experience in REST APIs, PostgreSQL and MySQL databases, and Linux systems. Quick learning ability and adaptation to new technologies.",
     "p2_start": "Trained at the ",
     "p2_highlight": "University of Pamplona",
-    "p2_end": ", I have developed technical projects including backend development with Spring Boot, data manipulation, and cloud deployment. My skills include Git version control and Linux operating systems.",
+    "p2_end": ", I have developed technical projects with backend frameworks such as FastAPI and Django, along with data manipulation and cloud deployment. My skills include Git version control and Linux operating systems.",
     "p3_start": "Seeking a ",
     "p3_highlight": "professional internship",
     "p3_end": " as a backend developer to apply my Java and Python knowledge, contributing to real projects while continuing my professional development."
@@ -74,6 +74,13 @@
         "tech": ["React", "PostgreSQL", "FastAPI"],
         "metrics": "40% reduction in manual processing",
         "link": ""
+      },
+      {
+        "name": "Stock Trading Simulator (Academic Project)",
+        "description": "Full-stack stock market simulation web platform for beginners to learn investing without using real money. Features real-time stock prices, simulated buy/sell, portfolio tracking, transaction history, USD/COP conversion, JWT authentication with 2FA, and educational modules.",
+        "tech": ["React", "TypeScript", "FastAPI", "PostgreSQL", "Docker"],
+        "metrics": "34 REST API endpoints powering a real-time stock trading simulator with 2FA and bilingual support",
+        "link": "https://github.com/personalbuse/finanzas-frontend"
       }
     ],
     "all": "All",
